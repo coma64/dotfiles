@@ -1,0 +1,26 @@
+# Load .Xresources if it exists
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+
+# Change to german keyboard layout
+setxkbmap de
+# Disable key repeat
+#xset r rate 9999 35
+
+# Higher mouse sense
+xinput set-prop 13 148 2.5 0 0 0 2.5 0 0 0 1
+
+# Enable screen locker
+#xautolock -time 10 -locker slock &
+
+# Start statusbar
+#slstatus &
+
+# Set wallpaper
+feh --bg-center /home/coma/Pictures/wallpapers/purple-woods.jpg
+
+# Polybar
+xset +fp /home/coma/.local/share/fonts
+xset fp rehash
+
+# Load dwm
+exec ck-launch-session dbus-launch --sh-syntax --exit-with-session bspwm

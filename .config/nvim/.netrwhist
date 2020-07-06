@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/etc/skel'
+let g:netrw_dirhist_2='/etc/terminfo'
+let g:netrw_dirhist_1='/home/coma/dotfiles/dotfiles-old'
+let g:netrw_dirhist_0='/home/coma/dotfiles'
+let g:netrw_dirhist_9='/home/coma/dotfiles/new-dotfiles'
+let g:netrw_dirhist_8='/home/coma/dotfiles'
+let g:netrw_dirhist_7='/home/coma'
+let g:netrw_dirhist_6='/home/coma/dotfiles'
+let g:netrw_dirhist_5='/home/coma/dotfiles/dotfiles-old'
+let g:netrw_dirhist_4='/home/coma/dotfiles'
