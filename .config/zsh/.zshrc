@@ -1,73 +1,83 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# TODO: Switch to a ZSH plugin manager
-# Path to your oh-my-zsh installation.
-export ZSH="/home/coma/.oh-my-zsh"
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-# Edit command line in NVIM
-autoload -z edit-command-line
-zle -N edit-command-line
-bindkey "^Z" edit-command-line
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zinit-zsh/z-a-rust \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-bin-gem-node
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-HYPHEN_INSENSITIVE="true"
+### End of Zinit's installer chunk
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+# Plugins
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+#zinit ice wait lucid
+#zinit pack for fzf
+zinit ice wait lucid
+zinit snippet OMZ::plugins/pj/pj.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/debian/debian.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/git/git.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/extract/extract.plugin.zsh
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+zinit ice wait lucid
+zinit snippet OMZ::plugins/pyenv/pyenv.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
 
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(ripgrep pj zsh-syntax-highlighting zsh-completions zsh-autosuggestions debian git extract z history-substring-search zsh-vim-mode pyenv tmux)
+zinit ice wait lucid svn
+zinit snippet OMZ::plugins/history-substring-search
 
-. $ZSH/oh-my-zsh.sh
+zinit ice wait lucid
+zinit light clvv/fasd
+zinit ice wait lucid
+zinit light softmoth/zsh-vim-mode
 
-# Reload autocompletion, required by zsh-completions plugin
-autoload -U compinit && compinit
+zinit ice wait lucid atload'_zsh_autosuggest_start'
+zinit light zsh-users/zsh-autosuggestions
 
-# Plugin configuration
-# pj (project jump)
+zinit ice wait lucid blockf
+zinit light zsh-users/zsh-completions
+
+# pj
 PROJECT_PATHS=($HOME/dev/*)
 
 # Load aliases
 if [ -f $HOME/.config/aliases.sh ]; then
     . $HOME/.config/aliases.sh
 fi
+
 export WORDCHARS=''    # ignore these chars on ctrl-w
 
-# Use "$ showkey -a" to find out keycodes
-# Bind command specific history to ctrl + p
-bindkey "^P" history-substring-search-up
-bindkey "^N" history-substring-search-down
-# TODO: Bind auto complete to tab or smth
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || . ~/.p10k.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Command history
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+setopt append_history # append rather then overwrite
+setopt extended_history # save timestamp
+setopt inc_append_history # add history immediately after typing a command
