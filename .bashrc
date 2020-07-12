@@ -52,4 +52,7 @@ if ! shopt -oq posix; then
 fi
 
 # Custom prompt
-PS1="[\A] \[\e[34m\]\u\[\e[39m\]:\[\e[35m\]\W\[\e[39m\] $ "
+PS1="\[\e[33m\][\A] \[\e[34m\]\u\[\e[39m\] \[\e[31m\]:: \[\e[35m\]\W\[\e[39m\] $ "
+
+# Autostart tmux
+[ -z "$TMUX"  ] && { tmux attach || exec tmux new-session -s main -c $HOME && exit;}
