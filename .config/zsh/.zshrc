@@ -27,57 +27,119 @@ zinit light-mode for \
     zinit-zsh/z-a-bin-gem-node
 
 ### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+
+# nistory
+# Append rather then overwrite
+setopt append_history 
+# Add history immediately after typing a command
+setopt inc_append_history 
+# Add timestemp to each entry
+setopt extended_history
+# History length and file
+SAVEHIST=10000
+HISTSIZE=$SAVEHIST
+HISTFILE=~/.zsh_history
+
+# Ignore these chars on ctrl-w
+export WORDCHARS=''    
 
 # Plugins
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
 
-#zinit ice wait lucid
-#zinit pack for fzf
+zinit ice as"completion" wait lucid blockf
+zinit snippet OMZ::plugins/rust/_rust
+zinit ice as"completion" wait lucid blockf
+zinit snippet OMZ::plugins/rustup/_rustup
+zinit ice as"completion" wait lucid blockf
+zinit snippet OMZ::plugins/fd/_fd
+zinit ice as"completion" wait lucid blockf
+zinit snippet OMZ::plugins/tmuxinator/_tmuxinator
+
+zinit ice wait lucid
+zinit snippet OMZ::plugins/systemd/systemd.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/tmuxinator/tmuxinator.plugin.zsh
+zinit ice wait lucid blockf
+zinit light zsh-users/zsh-completions
+ZSH_AUTOSUGGEST_USE_ASYNC=true
+ZSH_AUTOSUGGEST_MANUAL_REBIND=true
+zinit ice wait lucid atload'_zsh_autosuggest_start'
+zinit light zsh-users/zsh-autosuggestions
+zinit ice lucid wait
+zinit snippet OMZ::plugins/zsh_reload/zsh_reload.plugin.zsh
+zinit ice lucid wait
+zinit snippet OMZ::plugins/web-search/web-search.plugin.zsh
+zinit ice lucid wait
+zinit snippet OMZ::plugins/vscode/vscode.plugin.zsh
+zinit ice lucid wait
+zinit snippet OMZ::plugins/safe-paste/safe-paste.plugin.zsh
+zinit ice lucid wait
+zinit snippet OMZ::plugins/rsync/rsync.plugin.zsh
+zinit ice lucid wait
+zinit snippet OMZ::plugins/git-extras/git-extras.plugin.zsh
+zinit ice lucid wait
+zinit snippet OMZ::plugins/cp/cp.plugin.zsh
+zinit ice lucid wait
+zinit snippet OMZ::plugins/command-not-found/command-not-found.plugin.zsh
+# Set fzf installation directory path
+export FZF_BASE=`which fzf`
+# Uncomment the following line to disable fuzzy completion
+# export DISABLE_FZF_AUTO_COMPLETION="true"
+# Uncomment the following line to disable key bindings (CTRL-T, CTRL-R, ALT-C)
+# export DISABLE_FZF_KEY_BINDINGS="true"
+zinit ice wait lucid
+zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/alias-finder/alias-finder.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/npm/npm.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/node/node.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/pip/pip.plugin.zsh
+PROJECT_PATHS=($HOME/dev/*)
 zinit ice wait lucid
 zinit snippet OMZ::plugins/pj/pj.plugin.zsh
 zinit ice wait lucid
-zinit snippet OMZ::plugins/debian/debian.plugin.zsh
+zinit snippet OMZ::plugins/archlinux/archlinux.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/extract/extract.plugin.zsh
-
-zinit ice wait lucid
-zinit snippet OMZ::plugins/pyenv/pyenv.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
-
-zinit ice wait lucid svn
-zinit snippet OMZ::plugins/history-substring-search
-
 zinit ice wait lucid
-zinit light clvv/fasd
-zinit ice wait lucid
+zinit snippet OMZ::plugins/asdf/asdf.plugin.zsh
+
+# Binds
+# TODO: shit doesn't work
+zinit ice wait lucid 
+zinit light zdharma/history-search-multi-word
+
+KEYTIMEOUT=1
+zinit ice lucid wait 
 zinit light softmoth/zsh-vim-mode
 
-zinit ice wait lucid atload'_zsh_autosuggest_start'
-zinit light zsh-users/zsh-autosuggestions
+bindkey '^[ ' autosuggest-accept
 
-zinit ice wait lucid blockf
-zinit light zsh-users/zsh-completions
-
-# pj
-PROJECT_PATHS=($HOME/dev/*)
+# broot
+source /home/coma/.config/broot/launcher/bash/br
+# thefuck (default alias: fuck)
+eval $(thefuck --alias)
+# fasd
+eval "$(fasd --init auto)"
 
 # Load aliases
 if [ -f $HOME/.config/aliases.sh ]; then
     . $HOME/.config/aliases.sh
 fi
-
-export WORDCHARS=''    # ignore these chars on ctrl-w
-
-# Command history
-SAVEHIST=10000
-HISTFILE=~/.zsh_history
-setopt append_history # append rather then overwrite
-setopt extended_history # save timestamp
-setopt inc_append_history # add history immediately after typing a command
+# Load zsh specific aliases
+if [ -f $HOME/.config/zsh/zsh-aliases.zsh ]; then
+    . $HOME/.config/zsh/zsh-aliases.zsh 
+fi

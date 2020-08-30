@@ -1,3 +1,6 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": ["cpp", "py"]
+    "coc.preferences.formatOnSaveFiletypes": ["cpp", "py"],
+    "clangd.arguments": ["--fallback-style=webkit"],
+    "explorer.icon.enableNerdfont": true,
+    "explorer.width": 30
 }

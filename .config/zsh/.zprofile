@@ -1,1 +1,3 @@
-[ -f $HOME/.profile ] && . $HOME/.profile    
+if [[ -f $HOME/.profile ]]; then 
+    . $HOME/.profile
+fi

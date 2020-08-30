@@ -16,16 +16,20 @@ if dein#load_state('/home/coma/.local/share/dein')
     call dein#add('/home/coma/.local/share/dein/repos/github.com/Shougo/dein.vim')
 
     " Add or remove your plugins here like this:
-    "call dein#add('Shougo/neosnippet.vim')
-    "call dein#add('Shougo/neosnippet-snippets')
-    call dein#add('tpope/vim-sensible')
     call dein#add('vim-airline/vim-airline')
-    call dein#add('vim-airline/vim-airline-themes')
+    call dein#add('tpope/vim-sensible')
     call dein#add('chrisbra/Colorizer')
-    call dein#add('https://github.com/neoclide/coc.nvim/', { 'rev': 'release' })
+    call dein#add('neoclide/coc.nvim/', { 'rev': 'release' })
     call dein#add('tpope/vim-fugitive')
-    call dein#add('drewtempelmeyer/palenight.vim')
-
+    call dein#add('tpope/vim-dispatch')
+    call dein#add('sheerun/vim-polyglot')
+    call dein#add('junegunn/fzf', { 'build': './install', 'rtp': '' })
+    call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+    call dein#add('tpope/vim-surround')
+    call dein#add('rhysd/clever-f.vim')
+    call dein#add('franbach/miramare')
+    call dein#add('balanceiskey/vim-framer-syntax')
+    call dein#add('simnalamburt/vim-mundo')
 
     " Required:
     call dein#end()
@@ -37,73 +41,91 @@ filetype plugin indent on
 syntax enable
 
 " If you want to install not installed plugins on startup.
-
 if dein#check_install()
   call dein#install()
 endif
 
-" Use same clipboard as X
-set clipboard+=unnamedplus              
-
-" Completion preview
+" Sensible defaults ^^
+set clipboard^=unnamedplus              
+set undodir=~/.cache/vim/undodir
+set undofile
 set completeopt-=preview
-
-" Show line numbers
 set number                              
 set relativenumber                      
-
-" Disalbe some VI compability things
 set nocompatible
-
-" Tabs and spaces
 set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-
-" Always show status bar
 set ls=2                                
-
-" When scrolling, keep cursor 0 lines away from screen border
 set scrolloff=0                         
-
-" Search settings
 set ignorecase
 set smartcase
 set hlsearch                            
-
-" Syntax highlighting
-syntax enable                           
-
-" Only acceptable choice
 set nowrap
-
-" Auto completion
 set wildmode=list:longest
+set smartindent
+set colorcolumn=100
+highlight ColorColumn ctermbg=0 guibg=grey
 
 " Bindings
 let mapleader = " "
-"inoremap ii <Esc>
 nnoremap Y y$
+nnoremap <C-n> :noh<CR>:call clever_f#reset()<CR>
+nnoremap <leader>t :tab h<SPACE>
+nnoremap - :pu _<CR>
+nnoremap _ :pu! _<CR>
+nnoremap <leader><CR> :so %<CR>
+nnoremap <leader>r :tabe ~/.config/nvim/init.vim<CR>
+nnoremap <leader>m :MundoToggle<CR>
+nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+nnoremap <Leader>ps :Rg<SPACE>
+nnoremap <leader>pf :Files<CR>
+nnoremap <C-p> :GFiles<CR>
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
+nnoremap <leader>H :wincmd H<CR>
+nnoremap <leader>J :wincmd J<CR>
+nnoremap <leader>K :wincmd K<CR>
+nnoremap <leader>L :wincmd L<CR>
+nnoremap <leader>o :only<CR>
+nnoremap <leader>v :wincmd v<CR>
+nnoremap <Leader>+ :vertical resize +5<CR>
+nnoremap <Leader>- :vertical resize -5<CR>
+nnoremap <leader>qq :qa<CR>
+nnoremap <leader>qf :qa!<CR>
+nnoremap <leader>ww :wq<CR>
+nnoremap <leader>wf :wq!<CR>
 
-" Use Lexplore insteand of the coc one
-"nmap <leader>e :CocCommand explorer<CR>
-nnoremap <leader>e :Lex<Cr>:vert resize 40<Cr>
+" fzf
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+let $FZF_DEFAULT_OPTS='--reverse'
+let g:fzf_checkout_track_key = 'ctrl-t'
 
-" Theme
-colorscheme palenight
+" Explorer
+nmap <leader>e :CocCommand explorer<CR>
+"nnoremap <leader>e :Lex<Cr>:vert resize 40<Cr>
 
-" Fix some color issues with tmux
+" Enable true color 24
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
 
+" Theme
+set background=dark
+let g:miramare_enable_italic = 1
+colorscheme miramare
+
 " Airline 
-let g:airline_theme = 'palenight'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme = 'miramare'
 
 " .fish files highlighting
 autocmd BufReadPost *.fish set syntax=fish
