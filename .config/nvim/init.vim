@@ -96,9 +96,11 @@ nnoremap <leader>v :wincmd v<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <leader>qq :qa<CR>
-nnoremap <leader>qf :qa!<CR>
-nnoremap <leader>ww :wq<CR>
-nnoremap <leader>wf :wq!<CR>
+nnoremap <leader>qe :qa!<CR>
+nnoremap <leader>ww :wqa<CR>
+nnoremap <leader>we :wqa!<CR>
+nnoremap <leader>n :next<CR>
+nnoremap <leader>p :prev<CR>
 
 " fzf
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
