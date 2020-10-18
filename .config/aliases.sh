@@ -6,13 +6,18 @@ else
     alias fdd="find -type d -O3 -L -ls -iname"
 fi
 
+if command -v 'lsd' &> /dev/null; then
+    alias ll="lsd -lA"
+    alias lld="lsd -ld"
+else
+    alias ll="ls --color=auto -lah"
+    alias lld="ls --color=auto -ld"
+fi
+
 alias git="hub"
 alias config="git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME/"
 alias exchr="curl rate.sx"
 alias wip="curl --silent ipinfo.io"
-alias ll="lsd -lA"
-alias ld="lsd -ld"
-alias l="ls -lah --color=auto"
 alias sudo="sudo "
 alias tb="nc termbin.com 9999 | tee | xclip -selection clipboard"
 alias tiny='function _tinyUrl(){ curl -s http://tinyurl.com/api-create.php?url\="$1"; echo; };_tinyUrl'
