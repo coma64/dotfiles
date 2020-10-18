@@ -54,6 +54,18 @@ fi
 # Custom prompt
 PS1="\[\e[33m\][\A] \[\e[34m\]\u\[\e[39m\] \[\e[31m\]:: \[\e[35m\]\W\[\e[39m\] $ "
 
+# From distrotubes dotfiles
+shopt -s autocd # change to named directory
+shopt -s cdspell # autocorrects cd misspellings
+shopt -s cmdhist # save multi-line commands in history as single line
+shopt -s dotglob
+shopt -s histappend # do not overwrite history
+shopt -s expand_aliases # expand aliases
+shopt -s checkwinsize # checks term size when bash regains control
+
+#ignore upper and lowercase when TAB completion
+bind "set completion-ignore-case on"
+
 # Autostart tmux
 #[ -z "$TMUX"  ] && { tmux attach || exec tmux new-session -s main -c $HOME && exit;}
 

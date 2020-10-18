@@ -29,6 +29,20 @@ alias nethogs="nethogs -lv 4"
 alias sncli="sncli --config=$HOME/.config/sncli/snclirc"
 alias color-test="msgcat --color=test"
 alias c="broot -h $HOME/.config"
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -I"
+alias df='df -h'
+alias free='free -m'
+alias sn="sudo shutdown now"
+alias sr="sudo reboot"
+alias jctl="journalctl -p 3 -xb"
+# verify signature for isos
+alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
+# receive the key of a developer
+alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
+alias ytv="youtube-dl -f bestvideo+bestaudio "
+alias yta="youtube-dl --extract-audio --audio-format mp3 "
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
