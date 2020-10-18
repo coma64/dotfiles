@@ -1,12 +1,12 @@
 #! /bin/sh
 
-compton &
+picom &
 sxhkd &
 unclutter &
 dunst &
 pidswallow --loop &
 $HOME/.config/polybar/launch.sh &
-feh --bg-center /home/coma/Pictures/alena-aenami-away-1k.jpg
+feh --bg-center /home/coma/Pictures/wallpapers/alena-aenami/alena-aenami-away-1k.jpg
 
 bspc monitor -d TTY WEB LAB MED MISC
 

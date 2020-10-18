@@ -56,3 +56,5 @@ PS1="\[\e[33m\][\A] \[\e[34m\]\u\[\e[39m\] \[\e[31m\]:: \[\e[35m\]\W\[\e[39m\] $
 
 # Autostart tmux
 #[ -z "$TMUX"  ] && { tmux attach || exec tmux new-session -s main -c $HOME && exit;}
+
+source /home/coma/.config/broot/launcher/bash/br

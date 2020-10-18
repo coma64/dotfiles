@@ -1,4 +1,4 @@
-if [ command -v fd &>/dev/null ]; then
+if command -v 'fd' &> /dev/null; then
     alias fdf="fd --type file --hidden --no-ignore --ignore-case --glob --list-details --follow"
     alias fdd="fd --type directory --hidden --no-ignore --ignore-case --glob --list-details --follow"
 else
@@ -7,7 +7,7 @@ else
 fi
 
 alias git="hub"
-alias config="git --git-dir=$HOME/.dotfiles --work-tree=$HOME/"
+alias config="git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME/"
 alias exchr="curl rate.sx"
 alias wip="curl --silent ipinfo.io"
 alias ll="lsd -lA"
@@ -23,6 +23,7 @@ alias wifi-restart="nmcli con down id 'fritzbox-zaton' && nmcli con up id 'fritz
 alias nethogs="nethogs -lv 4"
 alias sncli="sncli --config=$HOME/.config/sncli/snclirc"
 alias color-test="msgcat --color=test"
+alias c="broot -h $HOME/.config"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

@@ -95,12 +95,14 @@ nnoremap <leader>o :only<CR>
 nnoremap <leader>v :wincmd v<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
-nnoremap <leader>qq :qa<CR>
-nnoremap <leader>qe :qa!<CR>
-nnoremap <leader>ww :wqa<CR>
-nnoremap <leader>we :wqa!<CR>
+nnoremap <leader>qa :qa<CR>
+nnoremap <leader>qq :qa!<CR>
+nnoremap <leader>wa :wqa<CR>
+nnoremap <leader>ww :wqa!<CR>
 nnoremap <leader>n :next<CR>
-nnoremap <leader>p :prev<CR>
+nnoremap <leader>N :previous<CR>
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 " fzf
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }

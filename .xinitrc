@@ -7,5 +7,4 @@ xset r rate 250 50
 # Enable screen locker
 #xautolock -time 10 -locker slock &
 
-compton &
 exec bspwm
