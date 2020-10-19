@@ -48,6 +48,10 @@ HISTFILE=~/.zsh_history
 # Ignore these chars on ctrl-w
 export WORDCHARS=''    
 
+# Completion
+autoload -U compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
 # Plugins
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
@@ -61,10 +65,6 @@ zinit snippet OMZ::plugins/fd/_fd
 zinit ice as"completion" wait lucid blockf
 zinit snippet OMZ::plugins/tmuxinator/_tmuxinator
 
-#zinit ice wait lucid
-#zinit snippet OMZ::plugins/wd/wd.sh
-#zinit ice wait lucid
-#zinit snippet OMZ::plugins/wd/wd.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/systemd/systemd.plugin.zsh
 zinit ice wait lucid
@@ -79,8 +79,6 @@ zinit ice lucid wait
 zinit snippet OMZ::plugins/zsh_reload/zsh_reload.plugin.zsh
 zinit ice lucid wait
 zinit snippet OMZ::plugins/vscode/vscode.plugin.zsh
-zinit ice lucid wait
-zinit snippet OMZ::plugins/safe-paste/safe-paste.plugin.zsh
 zinit ice lucid wait
 zinit snippet OMZ::plugins/rsync/rsync.plugin.zsh
 zinit ice lucid wait
@@ -105,8 +103,6 @@ zinit ice wait lucid
 zinit snippet OMZ::plugins/extract/extract.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
-#zinit ice wait lucid
-#zinit snippet OMZ::plugins/asdf/asdf.plugin.zsh
 
 # Binds
 # TODO: shit doesn't work
@@ -116,10 +112,6 @@ zinit light softmoth/zsh-vim-mode
 
 # Set fzf installation directory path
 export FZF_BASE=`which fzf`
-# Uncomment the following line to disable fuzzy completion
-# export DISABLE_FZF_AUTO_COMPLETION="true"
-# Uncomment the following line to disable key bindings (CTRL-T, CTRL-R, ALT-C)
-# export DISABLE_FZF_KEY_BINDINGS="true"
 zinit ice wait lucid
 zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh
 

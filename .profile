@@ -1,6 +1,6 @@
 export EDITOR='nvim'
 export VISUAL='nvim'
-export PAGER=`[ command -v bat &>/dev/null ] && echo 'bat' || echo 'less'`
+export PAGER=`command -v bat &>/dev/null && echo 'bat' || echo 'less'`
 export BROWSER='chromium'
 export MANPAGER='less'
 export PF_ASCII='default'

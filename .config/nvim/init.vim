@@ -30,6 +30,7 @@ if dein#load_state('/home/coma/.local/share/dein')
     call dein#add('franbach/miramare')
     call dein#add('balanceiskey/vim-framer-syntax')
     call dein#add('simnalamburt/vim-mundo')
+    call dein#add('mhinz/vim-startify')
 
     " Required:
     call dein#end()
@@ -72,7 +73,7 @@ highlight ColorColumn ctermbg=0 guibg=grey
 let mapleader = " "
 nnoremap Y y$
 nnoremap <C-n> :noh<CR>:call clever_f#reset()<CR>
-nnoremap <leader>t :tab h<SPACE>
+nnoremap <leader>t :tabe<SPACE>
 nnoremap - :pu _<CR>
 nnoremap _ :pu! _<CR>
 nnoremap <leader><CR> :so %<CR>
@@ -103,6 +104,8 @@ nnoremap <leader>n :next<CR>
 nnoremap <leader>N :previous<CR>
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
+nnoremap H F(
+nnoremap L f(
 
 " fzf
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
