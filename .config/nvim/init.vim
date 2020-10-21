@@ -31,6 +31,10 @@ if dein#load_state('/home/coma/.local/share/dein')
     call dein#add('balanceiskey/vim-framer-syntax')
     call dein#add('simnalamburt/vim-mundo')
     call dein#add('mhinz/vim-startify')
+    call dein#add('AndrewRadev/bufferize.vim')
+    call dein#add('tpope/vim-commentary')
+    call dein#add('christoomey/vim-conflicted')
+    call dein#add('Raimondi/delimitMate')
 
     " Required:
     call dein#end()
@@ -85,6 +89,7 @@ nnoremap <Leader>ps :Rg<SPACE>
 nnoremap <leader>pf :Files<CR>
 nnoremap <C-p> :GFiles<CR>
 nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>T :wincmd T<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
@@ -96,15 +101,15 @@ nnoremap <leader>o :only<CR>
 nnoremap <leader>v :wincmd v<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
-nnoremap <leader>qa :qa<CR>
-nnoremap <leader>qq :qa!<CR>
-nnoremap <leader>wa :wqa<CR>
-nnoremap <leader>ww :wqa!<CR>
+nnoremap <leader>qq :qa<CR>
+nnoremap <leader>qf :qa!<CR>
+nnoremap <leader>ww :wqa<CR>
+nnoremap <leader>wf :wqa!<CR>
 nnoremap <leader>n :next<CR>
 nnoremap <leader>N :previous<CR>
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
-nnoremap H F(
+nnoremap H F)
 nnoremap L f(
 
 " fzf
@@ -292,8 +297,8 @@ nnoremap <silent><nowait> <leader>P  :<C-u>CocListResume<CR>
 " reuse <leader>{h,l,u,i}
 " coc-clangd
 augroup clangd
-    autocmd FileType cpp nnoremap <buffer><silent><nowait> <leader>h :<C-u>CocCommand clangd.switchSourceHeader<CR>
-    autocmd FileType cpp nnoremap <buffer><silent><nowait> <leader>l :<C-u>CocCommand clangd.symbolInfo<CR>
+    autocmd FileType cpp nnoremap <buffer><silent><nowait> <leader>ch :<C-u>CocCommand clangd.switchSourceHeader<CR>
+    autocmd FileType cpp nnoremap <buffer><silent><nowait> <leader>cl :<C-u>CocCommand clangd.symbolInfo<CR>
 augroup end
 
 " COOLSTUFF:

@@ -21,7 +21,6 @@ alias wip="curl --silent ipinfo.io"
 alias sudo="sudo "
 alias tb="nc termbin.com 9999 | tee | xclip -selection clipboard"
 alias tiny='function _tinyUrl(){ curl -s http://tinyurl.com/api-create.php?url\="$1"; echo; };_tinyUrl'
-alias gbr="git remote get-url origin | xargs xdg-open"
 alias grep="grep --color=auto"
 alias cap="bat /sys/class/power_supply/BAT0/capacity"
 alias wifi-restart="nmcli con down id 'fritzbox-zaton' && nmcli con up id 'fritzbox-zaton'"
@@ -47,6 +46,10 @@ alias yta="youtube-dl --extract-audio --audio-format mp3 "
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+function git_current_branch {
+    git branch --show-current
+}
 
 function tsc() {
     TOTAL_SECONDS_SINCE_CREATION=$(expr `date +%s` - `stat -c %Y $@`)
