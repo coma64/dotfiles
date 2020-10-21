@@ -4,7 +4,7 @@
     font: "DejaVuSansMono Nerd Font 9";
     foreground: #c5c8c6;
     background-color: #1d1f21;
-    active-background: #E53935;
+    active-background: #9e434c;
     urgent-background: #ff5555;
     selected-background: @active-background;
     selected-urgent-background: @urgent-background;
