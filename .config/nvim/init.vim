@@ -97,8 +97,10 @@ nnoremap <leader>H :wincmd H<CR>
 nnoremap <leader>J :wincmd J<CR>
 nnoremap <leader>K :wincmd K<CR>
 nnoremap <leader>L :wincmd L<CR>
+nnoremap <leader>x :wincmd q<CR>
 nnoremap <leader>o :only<CR>
 nnoremap <leader>v :wincmd v<CR>
+nnoremap <leader>s :wincmd s<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <leader>qq :qa<CR>

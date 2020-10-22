@@ -1,4 +1,9 @@
-alias n="f -e nvim"
-alias s="f -e sudoedit"
-alias o="a -e xdg-open"
+alias n="fasd -f -e nvim"
+alias s="fasd -f -e sudoedit"
+alias o="fasd -a -e xdg-open"
 alias af="alias-finder -l"
+
+function src() {
+    source `fasd -f $1`
+}
+

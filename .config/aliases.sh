@@ -27,7 +27,8 @@ alias wifi-restart="nmcli con down id 'fritzbox-zaton' && nmcli con up id 'fritz
 alias nethogs="nethogs -lv 4"
 alias sncli="sncli --config=$HOME/.config/sncli/snclirc"
 alias color-test="msgcat --color=test"
-alias c="broot -h $HOME/.config"
+alias con="br -h $HOME/.config"
+alias dev="br -g $HOME/dev"
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -I"
@@ -47,7 +48,7 @@ alias yta="youtube-dl --extract-audio --audio-format mp3 "
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-function git_current_branch {
+function git_current_branch() {
     git branch --show-current
 }
 
@@ -66,13 +67,13 @@ function mvr() {
     rsync --archive -hh --partial --info=stats1 --info=progress2 --modify-window=1 --remove-source-files "$@"
 }
 
-function wttr {
+function wttr() {
     city=$(curl --silent ipinfo.io | jq ."city")
     city=${city:1:${#city[@]}-2}
 
     curl --silent "wttr.in/${city}"
 }
 
-function dcd {
+function dcd() {
     cd $(\fd --hidden --no-ignore --type directory $1 | sed "1q")
 }
