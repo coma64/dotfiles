@@ -43,6 +43,11 @@ alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
 alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
 alias ytv="youtube-dl -f bestvideo+bestaudio "
 alias yta="youtube-dl --extract-audio --audio-format mp3 "
+alias docker-clean-images="docker rmi \"$(docker images -a --filter=dangling=true -q)\""
+alias docker-clean-stopped="docker rm \"$(docker ps --filter=status=exited --filter=status=created -q)\""
+alias cby="xsel -ib"
+alias cbp="xsel -ob"
+alias which-key="showkey -a"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

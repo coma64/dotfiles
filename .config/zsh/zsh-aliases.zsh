@@ -3,7 +3,7 @@ alias s="fasd -f -e sudoedit"
 alias o="fasd -a -e xdg-open"
 alias af="alias-finder -l"
 
-function src() {
+function so() {
     source `fasd -f $1`
 }
 

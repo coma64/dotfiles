@@ -6,10 +6,6 @@
 super + shift + s
 	screenshot
 
-# Bitwarden password manager
-super + p
-    bw-rofi
-
 # Backlight
 super + b
     xbacklight -inc 10
@@ -22,8 +18,16 @@ super + e
     rofiunicode.sh
 
 # Browser
-super + g
+super + shift + u
     $BROWSER
+
+# Spotify
+super + shift + p
+    spotify
+
+# Discord
+super + shift + d
+    discord
 
 # terminal emulator
 super + Return
@@ -32,7 +36,6 @@ super + Return
 # program launcher
 super + @space
     rofi -show run
-    #dmenu_run
 
 # lock screen
 super + n

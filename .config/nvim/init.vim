@@ -23,8 +23,8 @@ if dein#load_state('/home/coma/.local/share/dein')
     call dein#add('tpope/vim-fugitive')
     call dein#add('tpope/vim-dispatch')
     call dein#add('sheerun/vim-polyglot')
-    call dein#add('junegunn/fzf', { 'build': './install', 'rtp': '' })
-    call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+    call dein#add('junegunn/fzf')
+    call dein#add('junegunn/fzf.vim')
     call dein#add('tpope/vim-surround')
     call dein#add('rhysd/clever-f.vim')
     call dein#add('franbach/miramare')
@@ -34,7 +34,12 @@ if dein#load_state('/home/coma/.local/share/dein')
     call dein#add('AndrewRadev/bufferize.vim')
     call dein#add('tpope/vim-commentary')
     call dein#add('christoomey/vim-conflicted')
+    call dein#add('preservim/tagbar')
     call dein#add('Raimondi/delimitMate')
+    call dein#add('embear/vim-localvimrc')
+    call dein#add('xolox/vim-session')
+    call dein#add('xolox/vim-misc')
+    call dein#add('puremourning/vimspector')
 
     " Required:
     call dein#end()
@@ -61,6 +66,7 @@ set nocompatible
 set expandtab
 set tabstop=4
 set softtabstop=4
+set smarttab
 set shiftwidth=4
 set ls=2                                
 set scrolloff=0                         
@@ -72,6 +78,9 @@ set wildmode=list:longest
 set smartindent
 set colorcolumn=100
 highlight ColorColumn ctermbg=0 guibg=grey
+set foldmethod=indent
+set lcs=eol:¬,space:·,tab:――⇀
+set list
 
 " Bindings
 let mapleader = " "
@@ -81,18 +90,20 @@ nnoremap <leader>t :tabe<SPACE>
 nnoremap - :pu _<CR>
 nnoremap _ :pu! _<CR>
 nnoremap <leader><CR> :so %<CR>
-nnoremap <leader>r :tabe ~/.config/nvim/init.vim<CR>
+nnoremap <leader>R :tabe ~/.config/nvim/init.vim<CR>
 nnoremap <leader>m :MundoToggle<CR>
 nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nnoremap <Leader>ps :Rg<SPACE>
 nnoremap <leader>pf :Files<CR>
 nnoremap <C-p> :GFiles<CR>
+
 nnoremap <leader>h :wincmd h<CR>
-nnoremap <leader>T :wincmd T<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
+
+nnoremap <leader>T :wincmd T<CR>
 nnoremap <leader>H :wincmd H<CR>
 nnoremap <leader>J :wincmd J<CR>
 nnoremap <leader>K :wincmd K<CR>
@@ -103,21 +114,48 @@ nnoremap <leader>v :wincmd v<CR>
 nnoremap <leader>s :wincmd s<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
-nnoremap <leader>qq :qa<CR>
-nnoremap <leader>qf :qa!<CR>
-nnoremap <leader>ww :wqa<CR>
-nnoremap <leader>wf :wqa!<CR>
-nnoremap <leader>n :next<CR>
-nnoremap <leader>N :previous<CR>
-" Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
+nnoremap <leader>q :qa<CR>
+nnoremap <leader>Q :qa!<CR>
+nnoremap <leader>w :wqa<CR>
+nnoremap <leader>W :wqa!<CR>
+nnoremap <leader>nn :next<CR>
+nnoremap <leader>np :previous<CR>
+nnoremap <leader>co :copen<CR>
+nnoremap <leader>cn :cnext<CR>
+nnoremap <leader>cp :cprev<CR>
+"nnoremap <leader>lq :lopen<CR>
+"nnoremap <leader>ln :lnext<CR>
+"nnoremap <leader>lp :lprev<CR>
+imap <C-s> <Plug>(coc-snippets-expand-jump)
 nnoremap H F)
 nnoremap L f(
+nnoremap <leader>b :TagbarToggle<CR>
+
+nnoremap <BS> za
+nnoremap <C-BS> zA
+nnoremap <C-h> zA
+
+nnoremap <leader>SS :SaveSession<SPACE>
+nnoremap <leader>SO :OpenSession<SPACE>
+
+nnoremap <leader>dg :diffget<CR>
+nnoremap <leader>dp :diffput<CR>
 
 " fzf
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 let $FZF_DEFAULT_OPTS='--reverse'
 let g:fzf_checkout_track_key = 'ctrl-t'
+
+" vim-session
+let g:session_autosave = 'no'
+
+" vim-localvimrc
+let g:localvimrc_ask = 0
+let g:localvimrc_name = ['.lvimrc', '.vim/vimrc.vim']
+let g:localvimrc_sandbox = 0
+
+" vimspector
+let g:vimspector_enable_mappings = 'HUMAN'
 
 " Explorer
 nmap <leader>e :CocCommand explorer<CR>
@@ -279,21 +317,21 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <leader>A  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <leader>CA  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-nnoremap <silent><nowait> <leader>E  :<C-u>CocList extensions<cr>
+nnoremap <silent><nowait> <leader>CE  :<C-u>CocList extensions<cr>
 " Show commands.
-nnoremap <silent><nowait> <leader>C  :<C-u>CocList commands<cr>
+nnoremap <silent><nowait> <leader>CC  :<C-u>CocList commands<cr>
 " Find symbol of current document.
-nnoremap <silent><nowait> <leader>O  :<C-u>CocList outline<cr>
+nnoremap <silent><nowait> <leader>CO  :<C-u>CocList outline<cr>
 " Search workspace symbols.
-nnoremap <silent><nowait> <leader>S  :<C-u>CocList -I symbols<cr>
+nnoremap <silent><nowait> <leader>CS  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent><nowait> <leader>J  :<C-u>CocNext<CR>
+nnoremap <silent><nowait> <leader>CJ  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent><nowait> <leader>K  :<C-u>CocPrev<CR>
+nnoremap <silent><nowait> <leader>CK  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent><nowait> <leader>P  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <leader>CP  :<C-u>CocListResume<CR>
 
 " extension specific bindings
 " reuse <leader>{h,l,u,i}

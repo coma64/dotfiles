@@ -5,6 +5,8 @@ setxkbmap dvp
 xset r rate 250 50
 
 # Enable screen locker
-#xautolock -time 10 -locker slock &
+# xautolock -time 10 -locker i3lock-fancy-dualmonitor &
 
-exec bspwm
+# exec bspwm
+export DESKTOP_SESSION=plasma
+exec startplasma-x11

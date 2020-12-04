@@ -70,3 +70,5 @@ bind "set completion-ignore-case on"
 #[ -z "$TMUX"  ] && { tmux attach || exec tmux new-session -s main -c $HOME && exit;}
 
 source /home/coma/.config/broot/launcher/bash/br
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -57,6 +57,8 @@ zinit ice depth=1
 zinit light romkatv/powerlevel10k
 
 zinit ice as"completion" wait lucid blockf
+zinit snippet OMZ::plugins/github/_hub
+zinit ice as"completion" wait lucid blockf
 zinit snippet OMZ::plugins/rust/_rust
 zinit ice as"completion" wait lucid blockf
 zinit snippet OMZ::plugins/rustup/_rustup
@@ -64,7 +66,15 @@ zinit ice as"completion" wait lucid blockf
 zinit snippet OMZ::plugins/fd/_fd
 zinit ice as"completion" wait lucid blockf
 zinit snippet OMZ::plugins/tmuxinator/_tmuxinator
+# zinit ice as"completion" wait lucid blockf
+# zinit snippet OMZ::plugins/docker/_docker
+# zstyle ':completion:*:*:docker:*' option-stacking yes
+# zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
+zinit ice wait lucid
+zinit snippet OMZ::plugins/github/github.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/git-extras/git-extras.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/systemd/systemd.plugin.zsh
 zinit ice wait lucid
@@ -103,6 +113,8 @@ zinit ice wait lucid
 zinit snippet OMZ::plugins/extract/extract.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/direnv/direnv.plugin.zsh
 
 # Binds
 # TODO: shit doesn't work
@@ -123,6 +135,15 @@ source /home/coma/.config/broot/launcher/bash/br
 eval $(thefuck --alias)
 # fasd
 eval "$(fasd --init auto)"
+# clipcat
+if type clipcat-menu >/dev/null 2>&1; then
+    alias clipedit=' clipcat-menu --finder=builtin edit'
+    alias clipdel=' clipcat-menu --finder=builtin remove'
+
+    bindkey -s '^\' "^Q clipcat-menu --finder=builtin insert ^J"
+    bindkey -s '^]' "^Q clipcat-menu --finder=builtin remove ^J"
+fi
+
 
 # Load aliases
 if [ -f $HOME/.config/aliases.sh ]; then
