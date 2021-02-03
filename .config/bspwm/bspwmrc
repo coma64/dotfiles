@@ -1,13 +1,9 @@
 #! /bin/sh
 
-picom &
+autostart &
+launch-polybar &
 sxhkd &
-unclutter &
-dunst &
 pidswallow --loop &
-$HOME/.config/polybar/launch.sh &
-feh --bg-center /home/coma/Pictures/wallpapers/background-ching-chong.png &
-clipcatd &
 
 bspc monitor -d TTY WEB LAB MED MISC
 

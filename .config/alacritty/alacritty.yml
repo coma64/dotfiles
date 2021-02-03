@@ -82,11 +82,11 @@ window:
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
-  history: 10000
+  history: 100000
 
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
-  #multiplier: 3
+  multiplier: 5
 
   # Scroll to the bottom when new text is written to the terminal.
   #auto_scroll: false
@@ -98,7 +98,7 @@ scrolling:
 # Some applications, like Emacs, rely on knowing about the width of a tab.
 # To prevent unexpected behavior in these applications, it's also required to
 # change the `it` value in terminfo when altering this setting.
-#tabspaces: 8
+tabspaces: 4
 
 # Font configuration
 font:
@@ -182,39 +182,67 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# Colors (Tomorrow Night)
+# # Colors (Tomorrow Night)
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0x2A2426' #'0x181a1b' #'0x1d1f21'
+#     foreground: '0xc5c8c6'
+
+#   # Colors the cursor will use if `custom_cursor_colors` is true
+#   cursor:
+#     text: '0x1d1f21'
+#     cursor: '0xffffff'
+
+#   # Normal colors
+#   normal:
+#     black:   '0x1d1f21'
+#     red:     '0xcc6666'
+#     green:   '0xb5bd68'
+#     yellow:  '0xe6c547'
+#     blue:    '0x81a2be'
+#     magenta: '0xb294bb'
+#     cyan:    '0x70c0ba'
+#     white:   '0x373b41'
+
+#   # Bright colors
+#   bright:
+#     black:   '0x666666'
+#     red:     '0xff3334'
+#     green:   '0x9ec400'
+#     yellow:  '0xf0c674'
+#     blue:    '0x81a2be'
+#     magenta: '0xb77ee0'
+#     cyan:    '0x54ced6'
+#     white:   '0x282a2e'
+
 colors:
   # Default colors
   primary:
-    background: '0x2A2426' #'0x181a1b' #'0x1d1f21'
-    foreground: '0xc5c8c6'
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '0x1d1f21'
-    cursor: '0xffffff'
+    background: '0x161616'
+    foreground: '0xffffff'
 
   # Normal colors
   normal:
-    black:   '0x1d1f21'
-    red:     '0xcc6666'
-    green:   '0xb5bd68'
-    yellow:  '0xe6c547'
-    blue:    '0x81a2be'
-    magenta: '0xb294bb'
-    cyan:    '0x70c0ba'
-    white:   '0x373b41'
+    black:   '0x222222'
+    red:     '0xe84f4f'
+    green:   '0xb7ce42'
+    yellow:  '0xfea63c'
+    blue:    '0x66aabb'
+    magenta: '0xb7416e'
+    cyan:    '0x6d878d'
+    white:   '0xdddddd'
 
   # Bright colors
   bright:
     black:   '0x666666'
-    red:     '0xff3334'
-    green:   '0x9ec400'
-    yellow:  '0xf0c674'
-    blue:    '0x81a2be'
-    magenta: '0xb77ee0'
-    cyan:    '0x54ced6'
-    white:   '0x282a2e'
+    red:     '0xd23d3d'
+    green:   '0xbde077'
+    yellow:  '0xffe863'
+    blue:    '0xaaccbb'
+    magenta: '0xe16a98'
+    cyan:    '0x42717b'
+    white:   '0xcccccc'
 
     # Bright and dim foreground colors
     #
@@ -402,7 +430,7 @@ background_opacity: 1.0
   # Record all characters and escape sequences as test data.
   #ref_test: false
 
-#mouse:
+mouse:
   # Click settings
   #
   # The `double_click` and `triple_click` settings control the time
@@ -414,7 +442,7 @@ background_opacity: 1.0
   # If this is `true`, the cursor is temporarily hidden when typing.
   #hide_when_typing: false
 
-  #url:
+  url:
     # URL launcher
     #
     # This program is executed when clicking on a text which is recognized as a URL.
@@ -434,7 +462,7 @@ background_opacity: 1.0
     #
     # These are the modifiers that need to be held down for opening URLs when clicking
     # on them. The available modifiers are documented in the key binding section.
-    #modifiers: None
+    modifiers: Control
 
 # Mouse bindings
 #

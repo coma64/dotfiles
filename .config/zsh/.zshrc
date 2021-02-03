@@ -33,24 +33,16 @@ zinit light-mode for \
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
-# nistory
-# Append rather then overwrite
+# History
 setopt append_history 
-# Add history immediately after typing a command
 setopt inc_append_history 
-# Add timestemp to each entry
 setopt extended_history
-# History length and file
 SAVEHIST=10000
-HISTSIZE=$SAVEHIST
-HISTFILE=~/.zsh_history
+HISTSIZE="${SAVEHIST}"
+HISTFILE="${HOME}/.zsh_history"
 
 # Ignore these chars on ctrl-w
-export WORDCHARS=''    
-
-# Completion
-autoload -U compinit && compinit
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+WORDCHARS=''    
 
 # Plugins
 zinit ice depth=1
@@ -65,20 +57,14 @@ zinit snippet OMZ::plugins/rustup/_rustup
 zinit ice as"completion" wait lucid blockf
 zinit snippet OMZ::plugins/fd/_fd
 zinit ice as"completion" wait lucid blockf
-zinit snippet OMZ::plugins/tmuxinator/_tmuxinator
-# zinit ice as"completion" wait lucid blockf
-# zinit snippet OMZ::plugins/docker/_docker
-# zstyle ':completion:*:*:docker:*' option-stacking yes
-# zstyle ':completion:*:*:docker-*:*' option-stacking yes
+zinit snippet OMZ::plugins/cargo/_cargo
+zinit ice as"completion" wait lucid blockf
+zinit snippet OMZ::plugins/docker/_docker
 
 zinit ice wait lucid
-zinit snippet OMZ::plugins/github/github.plugin.zsh
-zinit ice wait lucid
-zinit snippet OMZ::plugins/git-extras/git-extras.plugin.zsh
+zinit snippet OMZ::plugins/fancy-ctrl-z/fancy-ctrl-z.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/systemd/systemd.plugin.zsh
-zinit ice wait lucid
-zinit snippet OMZ::plugins/tmuxinator/tmuxinator.plugin.zsh
 zinit ice wait lucid blockf
 zinit light zsh-users/zsh-completions
 ZSH_AUTOSUGGEST_USE_ASYNC=true
@@ -91,12 +77,6 @@ zinit ice lucid wait
 zinit snippet OMZ::plugins/vscode/vscode.plugin.zsh
 zinit ice lucid wait
 zinit snippet OMZ::plugins/rsync/rsync.plugin.zsh
-zinit ice lucid wait
-zinit snippet OMZ::plugins/git-extras/git-extras.plugin.zsh
-zinit ice lucid wait
-zinit snippet OMZ::plugins/cp/cp.plugin.zsh
-zinit ice lucid wait
-zinit snippet OMZ::plugins/command-not-found/command-not-found.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/alias-finder/alias-finder.plugin.zsh
 zinit ice wait lucid
@@ -113,43 +93,63 @@ zinit ice wait lucid
 zinit snippet OMZ::plugins/extract/extract.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
+bgnotify_threshold=30
 zinit ice wait lucid
-zinit snippet OMZ::plugins/direnv/direnv.plugin.zsh
+zinit snippet OMZ::plugins/bgnotify/bgnotify.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/copybuffer/copybuffer.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/copydir/copydir.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/dnf/dnf.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/django/django.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/debian/debian.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/taskwarrior/taskwarrior.plugin.zsh
+PROJECT_PATHS=("${HOME}/dev/*")
+zinit ice wait lucid
+zinit snippet OMZ::plugins/pj/pj.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/nmap/nmap.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/history/history.plugin.zsh
 
-# Binds
-# TODO: shit doesn't work
+zinit ice lucid wait
+zinit light willghatch/zsh-saneopt
 KEYTIMEOUT=1
 zinit ice lucid wait 
 zinit light softmoth/zsh-vim-mode
 
-# Set fzf installation directory path
-export FZF_BASE=`which fzf`
+# Binds
+bindkey '^[ ' autosuggest-accept
+zle -N copydir{,}
+bindkey '^[^O' copydir
+
+# Completion
+autoload -U compinit
+compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+# broot
+source '/home/coma/.config/broot/launcher/bash/br'
+# thefuck (default alias: fuck)
+eval "$(thefuck --alias)"
+# fasd
+eval "$(fasd --init auto)"
+
+# fzf
+FZF_BASE="${HOME}/.fzf"
 zinit ice wait lucid
 zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh
 
-bindkey '^[ ' autosuggest-accept
-
-# broot
-source /home/coma/.config/broot/launcher/bash/br
-# thefuck (default alias: fuck)
-eval $(thefuck --alias)
-# fasd
-eval "$(fasd --init auto)"
-# clipcat
-if type clipcat-menu >/dev/null 2>&1; then
-    alias clipedit=' clipcat-menu --finder=builtin edit'
-    alias clipdel=' clipcat-menu --finder=builtin remove'
-
-    bindkey -s '^\' "^Q clipcat-menu --finder=builtin insert ^J"
-    bindkey -s '^]' "^Q clipcat-menu --finder=builtin remove ^J"
+if [ -f "${ZDOTDIR}/aliases.zsh" ]; then
+    source "${ZDOTDIR}/aliases.zsh" 
 fi
 
+if [ -f "${ZDOTDIR}/lib.zsh" ]; then
+    source "${ZDOTDIR}/lib.zsh" 
+fi
 
-# Load aliases
-if [ -f $HOME/.config/aliases.sh ]; then
-    . $HOME/.config/aliases.sh
-fi
-# Load zsh specific aliases
-if [ -f $HOME/.config/zsh/zsh-aliases.zsh ]; then
-    . $HOME/.config/zsh/zsh-aliases.zsh 
-fi
+neofetch

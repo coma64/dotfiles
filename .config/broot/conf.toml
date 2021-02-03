@@ -116,7 +116,9 @@ execution = "$PAGER {file}"
 #
 
 [skin]
-default = "gray(23) none / gray(20) none"
+default = "none none"
+
+# [skin]
 # default = "gray(20) gray(1)"
 # tree = "rgb(89, 73, 101) none"
 # file = "gray(21) none"
@@ -154,5 +156,3 @@ default = "gray(23) none / gray(20) none"
 # You may find other skins on
 #  https://dystroy.org/broot/documentation/configuration/#colors
 # for example a skin suitable for white backgrounds
-
-
