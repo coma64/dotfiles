@@ -1,0 +1,13 @@
+#!/bin/sh
+
+[ ! -d "${XDG_DATA_HOME}/autostart" ] && mkdir "${XDG_DATA_HOME}/autostart"
+
+killall 'dunst' || dunst > "${XDG_DATA_HOME}/autostart/dunst.log" 2>&1 &
+killall 'picom' || picom > "${XDG_DATA_HOME}/autostart/picom.log" 2>&1 &
+killall 'pulseaudio' || pulseaudio > "${XDG_DATA_HOME}/autostart/pulseaudio.log" 2>&1 &
+killall 'clipcatd'; clipcatd > "${XDG_DATA_HOME}/autostart/clipcatd.log" 2>&1 &
+feh --bg-center /home/coma/Pictures/wallpapers/purple-foggy.jpg > "${XDG_DATA_HOME}/autostart/feh.log" 2>&1 &
+
+clipcatctl clear &
+
+# xrandr --output DisplayPort-0 --mode 1920x1080 --rate 144 > "${XDG_DATA_HOME}/autostart/xrandr.log" 2>&1 &

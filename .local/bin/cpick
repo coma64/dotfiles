@@ -1,0 +1,6 @@
+#!/bin/bash
+
+COLOR=$(colorpicker --one-shot --preview | grep -e '#.*$' -o)
+
+notify-send --urgency=low "${COLOR}"
+echo "${COLOR}" | xclip -i -selection clipboard
