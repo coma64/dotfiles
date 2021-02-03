@@ -115,6 +115,8 @@ zinit ice wait lucid
 zinit snippet OMZ::plugins/nmap/nmap.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/history/history.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
 
 zinit ice lucid wait
 zinit light willghatch/zsh-saneopt
