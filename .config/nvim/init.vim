@@ -9,10 +9,16 @@ let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 let $FZF_DEFAULT_OPTS='--reverse'
 let g:fzf_checkout_track_key = 'ctrl-t'
 
+" vim-conflicted
+" Disable default keybinds
+let g:diffget_local_map = ''
+let g:diffget_upstream_map = ''
+
 " vim-session
 let g:session_autosave = 'no'
 
 " polyglot
+" zsh completion is laggy
 let g:polyglot_disabled = ['sh']
 
 " vim-localvimrc
@@ -38,14 +44,11 @@ if dein#load_state('/home/coma/.cache/dein')
   call dein#add('/home/coma/.cache/dein/repos/github.com/Shougo/dein.vim')
 
     call dein#add('/home/coma/.fzf')
-    call dein#add('AndrewRadev/bufferize.vim')
-    call dein#add('chrisbra/Colorizer')
-    call dein#add('christoomey/vim-conflicted')
     call dein#add('cohama/lexima.vim')
     call dein#add('embear/vim-localvimrc')
+    call dein#add('chrisbra/Colorizer')
     call dein#add('frazrepo/vim-rainbow')
     call dein#add('junegunn/fzf.vim')
-    call dein#add('mg979/vim-studio-dark')
     call dein#add('mhinz/vim-startify')
     call dein#add('neoclide/coc.nvim/', { 'rev': 'release' })
     call dein#add('preservim/tagbar')
@@ -59,11 +62,7 @@ if dein#load_state('/home/coma/.cache/dein')
     call dein#add('tpope/vim-sensible')
     call dein#add('tpope/vim-surround')
     call dein#add('vim-airline/vim-airline')
-    call dein#add('vim-airline/vim-airline-themes')
-    call dein#add('vimlab/split-term.vim')
-    call dein#add('wsdjeg/dein-ui.vim')
-    call dein#add('xolox/vim-misc')
-    call dein#add('xolox/vim-session')
+    call dein#add('KeitaNakamura/neodark.vim')
 
     " Required:
     call dein#end()
@@ -80,23 +79,22 @@ if dein#check_install()
 endif
 
 " Sensible defaults ^^
-set clipboard^=unnamedplus              
+set clipboard^=unnamedplus
 set undodir=~/.cache/vim/undodir
 set undofile
 set completeopt-=preview
-set number                              
-set relativenumber                      
-set nocompatible
+set number
+set relativenumber
 set expandtab
 set tabstop=4
 set softtabstop=4
 set smarttab
 set shiftwidth=4
-set ls=2                                
-set scrolloff=0                         
+set ls=2
+set scrolloff=0
 set ignorecase
 set smartcase
-set hlsearch                            
+set hlsearch
 set nowrap
 set wildmode=list:longest
 set smartindent
@@ -110,85 +108,75 @@ set list
 " Bindings
 let mapleader = " "
 nnoremap Y y$
-nnoremap <C-n> :noh<CR>:call clever_f#reset()<CR>
-nnoremap - :pu _<CR>
-nnoremap _ :pu! _<CR>
-nnoremap <leader><CR> :so %<CR>
-nnoremap <leader>R :tabe ~/.config/nvim/init.vim<CR>
-nnoremap <leader>te :tabe<SPACE>
-nnoremap <leader>th :tab help<SPACE>
+nnoremap <C-n> :noh<cr>:call clever_f#reset()<CR>
+nnoremap - :pu _<cr>
+nnoremap _ :pu! _<cr>
+nnoremap <leader><cr> :w<CR>
+nnoremap <leader>R :tabe ~/.config/nvim/init.vim<cr>
+nnoremap <leader>te :tabe<space>
+nnoremap <leader>tm :tab help<space>
+nnoremap <leader>S :source %<cr>
+nnoremap <leader>m :vert help<space>
+nnoremap <leader>n :cnext<cr>
+nnoremap <leader>N :cprevious<cr>
 
-nnoremap <leader>h :wincmd h<CR>
-nnoremap <leader>j :wincmd j<CR>
-nnoremap <leader>k :wincmd k<CR>
-nnoremap <leader>l :wincmd l<CR>
-
-nnoremap <leader>H :wincmd H<CR>
-nnoremap <leader>J :wincmd J<CR>
-nnoremap <leader>K :wincmd K<CR>
-nnoremap <leader>L :wincmd L<CR>
-
-nnoremap <leader>v :wincmd v<CR>
-nnoremap <leader>s :wincmd s<CR>
-nnoremap <Leader>+ :vertical resize +5<CR>
-nnoremap <Leader>- :vertical resize -5<CR>
-
-nnoremap <leader>T :wincmd T<CR>
-nnoremap <leader>x :wincmd q<CR>
-nnoremap <leader>X :q!<CR>
-nnoremap <leader>w :w<CR>
-nnoremap <leader>o :only<CR>
-
-nnoremap <leader>nn :next<CR>
-nnoremap <leader>np :previous<CR>
-nnoremap <leader>qo :copen<CR>
-nnoremap <leader>qn :cnext<CR>
-nnoremap <leader>qp :cprev<CR>
-"nnoremap <leader>lq :lopen<CR>
-"nnoremap <leader>ln :lnext<CR>
-"nnoremap <leader>lp :lprev<CR>
-
-nnoremap <BS> za
-nnoremap <C-BS> zA
-nnoremap <C-h> zA
-" ctrl backspace doesn't work in tty
+nnoremap <leader>h :wincmd h<cr>
+nnoremap <leader>j :wincmd j<cr>
+nnoremap <leader>k :wincmd k<cr>
+nnoremap <leader>l :wincmd l<cr>
+nnoremap <leader>H :wincmd H<cr>
+nnoremap <leader>J :tabp<cr>
+nnoremap <leader>K :tabN<cr>
+nnoremap <leader>L :wincmd L<cr>
+nnoremap <leader>v :wincmd v<cr>
+nnoremap <leader>s :wincmd s<cr>
+nnoremap <Leader>+ :vertical resize +10<cr>
+nnoremap <Leader>- :vertical resize -10<cr>
+nnoremap <leader>T :wincmd T<cr>
+nnoremap <leader>x :wincmd q<cr>
+nnoremap <leader>X :q!<cr>
+nnoremap <leader>o :only<cr>
 
 " Plugin mappings
-nnoremap <leader>bm :MundoToggle<CR>
-nnoremap <leader>bt :TagbarToggle<CR>
+nnoremap <leader>bm :MundoToggle<cr>
+nnoremap <leader>bt :TagbarToggle<cr>
 
-nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<cr><CR>
 
-nnoremap <leader>Ss :SaveSession<SPACE>
-nnoremap <leader>So :OpenSession<SPACE>
+nnoremap <leader>dtc :call vimspector#RunToCursor()<cr>
 
-nnoremap <leader>D :Dispatch<CR>
+nnoremap <leader>ga :GFiles?<cr>
+nnoremap <leader>gb :BCommits<cr>
+nnoremap <leader>gc :Commits<cr>
+nnoremap <leader>gd :Git difftool<cr>
+nnoremap <leader>ge :Git grep<space>
+nnoremap <leader>gf :GFiles<cr>
+nnoremap <leader>gg :Git<cr>
+nnoremap <leader>gi :CocCommand git.chunkInfo<cr>
+nnoremap <leader>gl :Git blame<cr>
+nnoremap <leader>gn :GRename<space>
+nnoremap <leader>gp :CocCommand git.push<cr>
+nnoremap <leader>gr :Gread<cr>
+nnoremap <leader>gs :CocCommand git.chunkStage<cr>
+nnoremap <leader>gu :CocCommand git.chunkUndo<cr>
+nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>gy :CocCommand git.copyUrl<cr>
+vnoremap <leader>gl :Git blame<cr>
 
-nnoremap <leader>dfg :diffget<CR>
-nnoremap <leader>dfp :diffput<CR>
-
-nnoremap <leader>dtc :call vimspector#RunToCursor()<CR>
-
-nnoremap <leader>fff :Files<CR>
-nnoremap <leader>ffg :GFiles<CR>
-nnoremap <leader>ffl :Locate<SPACE>
-nnoremap <leader>fw :Rg <C-R>=expand("<cword>")<CR><CR>
-nnoremap <Leader>fr :Rg<SPACE>
-nnoremap <leader>fb  :Buffers<CR>
-nnoremap <leader>fla :Lines<CR>
-nnoremap <leader>flb :BLines<CR>
-nnoremap <leader>fta :Tags<CR>
-nnoremap <leader>ftb :BTags<CR>
-nnoremap <leader>fi :Windows<CR>
-nnoremap <leader>fhf :History<CR>
-nnoremap <leader>fhc :History:<CR>
-nnoremap <leader>fhs :History/<CR>
-nnoremap <leader>fga :Commits<CR>
-nnoremap <leader>fgb :BCommits<CR>
-nnoremap <leader>fc :Commands<CR>
-nnoremap <leader>fm :Maps<CR>
-nnoremap <leader>fh :Helptags<CR>
-nnoremap <leader>fy :Filetypes<CR>
+nnoremap <Leader>fr :Rg<space>
+nnoremap <leader>fb :Buffers<cr>
+nnoremap <leader>fc :Commands<cr>
+nnoremap <leader>ff :Files<cr>
+nnoremap <leader>fh :Helptags<cr>
+nnoremap <leader>fh :History<cr>
+nnoremap <leader>fi :Windows<cr>
+nnoremap <leader>fl :Lines<cr>
+nnoremap <leader>fm :Maps<cr>
+nnoremap <leader>fr :History:<cr>
+nnoremap <leader>fs :History/<cr>
+nnoremap <leader>ft :Colors<cr>
+nnoremap <leader>fw :Rg <C-R>=expand("<cword>")<cr><CR>
+nnoremap <leader>fy :Filetypes<cr>
 
 " COC Bindings
 " Use tab for trigger completion with characters ahead and navigate.
@@ -218,7 +206,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call <SID>show_documentation()<cr>
 
 " Symbol renaming.
 nmap <leader>crn <Plug>(coc-rename)
@@ -227,7 +215,7 @@ nmap <leader>crn <Plug>(coc-rename)
 xmap <leader>cf  <Plug>(coc-format-selected)
 nmap <leader>cf  <Plug>(coc-format-selected)
 " Format buffer
-nnoremap <leader>cfb :Format<CR>
+nnoremap <leader>cfb :Format<cr>
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
@@ -267,18 +255,18 @@ nnoremap <silent><nowait> <leader>CO  :<C-u>CocList outline<cr>
 " Search workspace symbols.
 nnoremap <silent><nowait> <leader>CS  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent><nowait> <leader>CJ  :<C-u>CocNext<CR>
+nnoremap <silent><nowait> <leader>CJ  :<C-u>CocNext<cr>
 " Do default action for previous item.
-nnoremap <silent><nowait> <leader>CK  :<C-u>CocPrev<CR>
+nnoremap <silent><nowait> <leader>CK  :<C-u>CocPrev<cr>
 " Resume latest coc list.
-nnoremap <silent><nowait> <leader>CP  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <leader>CP  :<C-u>CocListResume<cr>
 
 " Commands
 " Overwrite :W to also save the file cuz i keep typing it by accident...
 command! -nargs=0 W :w
 
 " Explorer
-nmap <leader>e :CocCommand explorer<CR>
+nmap <leader>e :CocCommand explorer<cr>
 "nnoremap <leader>e :Lex<Cr>:vert resize 40<Cr>
 
 " Enable true color 24
@@ -289,23 +277,20 @@ if exists('+termguicolors')
 endif
 
 " Theme
-set background=dark
-let g:Vsd = {}
-let g:Vsd.contrast = 2  " low medium (default) high
-colorscheme tomorrow_eighties
+let g:neodark#background = '#161616'
+colorscheme neodark
 
-" Airline 
+" Airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
-" let g:airline_theme = 'miramare'
-let g:airline_theme='wombat'
+let g:airline_theme='neodark'
 
 
 " .fish files highlighting
 autocmd BufReadPost *.fish set syntax=fish
 
-"""""""""""" COC """""""""""" 
+"""""""""""" COC """"""""""""
 " TextEdit might fail if hidden is not set.
 set hidden
 
@@ -339,11 +324,11 @@ endfunction
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
-" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <cr>`.
 if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<cr>"
 else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<cr>"
 endif
 
 function! s:show_documentation()
@@ -383,8 +368,8 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " reuse <leader>{h,l,u,i}
 " coc-clangd
 augroup clangd
-    autocmd FileType cpp nnoremap <buffer><silent><nowait> <leader>ch :<C-u>CocCommand clangd.switchSourceHeader<CR>
-    autocmd FileType cpp nnoremap <buffer><silent><nowait> <leader>cl :<C-u>CocCommand clangd.symbolInfo<CR>
+    autocmd FileType cpp nnoremap <buffer><silent><nowait> <leader>ch :<C-u>CocCommand clangd.switchSourceHeader<cr>
+    autocmd FileType cpp nnoremap <buffer><silent><nowait> <leader>cl :<C-u>CocCommand clangd.symbolInfo<cr>
 augroup end
 
 " COOLSTUFF:
