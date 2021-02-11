@@ -1,15 +1,16 @@
 alias a='fasd -a'
 alias af='alias-finder -l'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-alias b='fasd_broot'
+alias b='br'
+alias bb='fasd_broot'
 alias cap="bat /sys/class/power_supply/BAT0/capacity"
 alias color-test="msgcat --color=test"
-alias con="br -h $HOME/.config"
+alias c="br -h ${HOME}/.config"
 alias config="git --git-dir=${HOME}/.local/share/dotfiles --work-tree=${HOME}/"
 alias cp='cp -i'
 alias cpr='rsync --archive -hh --partial --info=stats1 --info=progress2 --modify-window=1'
 alias d='fasd -d'
-alias dev="br -g $HOME/dev"
+alias d="br -g ${HOME}/dev"
 alias df='df -h'
 alias doas='doas '
 alias du='du -h'
@@ -36,6 +37,7 @@ alias rb='elev-priv reboot'
 alias res-port-tmp='resize_portage_tmpdir'
 alias rm='rm -I'
 alias sudo='sudo '
+alias at='fasd -f -e bat'
 alias tb='nc termbin.com 9999'
 alias tiny='tiny_url'
 alias wttr="curl --silent \"wttr.in/$(ipinfo | jq '.city')\""

@@ -54,6 +54,13 @@ shortcut = "e"
 execution = "$EDITOR {file}"
 
 [[verbs]]
+name = "touch"
+invocation = "touch {new_file}"
+shortcut = "t"
+execution = "touch {directory}/{new_file}"
+leave_broot = false
+
+[[verbs]]
 invocation = "edit_stay"
 shortcut = "es"
 execution = "$EDITOR {file}"

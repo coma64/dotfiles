@@ -18,6 +18,8 @@ export XDG_CURRENT_DESKTOP="Qtile"
 export XDG_DATA_DIRS="${XDG_DATA_DIRS}:/var/lib/flatpak/exports/share:/home/coma/.local/share/flatpak/exports/share"
 export XDG_DATA_HOME="${HOME}/.local/share"
 export _JAVA_AWT_WM_NONREPARENTING=1
+export MAIL='thunderbird'
+export MANPAGER='nvim +Man!'
 
 source "${HOME}/.cargo/env"
 
