@@ -14,8 +14,10 @@ let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 let g:coc_global_extensions = [
     \ 'coc-clangd',
     \ 'coc-cmake',
+    \ 'coc-emmet',
     \ 'coc-explorer',
     \ 'coc-git',
+    \ 'coc-html',
     \ 'coc-json',
     \ 'coc-lists',
     \ 'coc-markdownlint',
@@ -35,14 +37,17 @@ let g:vimspector_install_gadgets = [
 \ ]
 
 set runtimepath+=/home/coma/.cache/dein/repos/github.com/Shougo/dein.vim
+
 if dein#load_state('/home/coma/.cache/dein')
     call dein#begin('/home/coma/.cache/dein')
     call dein#add('/home/coma/.cache/dein/repos/github.com/Shougo/dein.vim')
 
     call dein#add('/home/coma/.fzf')
-    call dein#add('cohama/lexima.vim')
+    call dein#add('KeitaNakamura/neodark.vim')
     call dein#add('chrisbra/Colorizer')
+    call dein#add('cohama/lexima.vim')
     call dein#add('frazrepo/vim-rainbow')
+    call dein#add('ghifarit53/tokyonight-vim')
     call dein#add('junegunn/fzf.vim')
     call dein#add('neoclide/coc.nvim/', { 'rev': 'release' })
     call dein#add('preservim/tagbar')
@@ -56,8 +61,6 @@ if dein#load_state('/home/coma/.cache/dein')
     call dein#add('tpope/vim-sensible')
     call dein#add('tpope/vim-surround')
     call dein#add('vim-airline/vim-airline')
-    call dein#add('KeitaNakamura/neodark.vim')
-    call dein#add('ghifarit53/tokyonight-vim')
 
     call dein#end()
     call dein#save_state()
@@ -115,7 +118,7 @@ set softtabstop=4
 set tabstop=4
 set undodir=~/.cache/vim/undodir
 set undofile
-set updatetime=4000 "50
+set updatetime=50
 set wildmode=list:longest
 
 if has("patch-8.1.1564")
@@ -126,6 +129,8 @@ endif
 
 filetype plugin indent on
 syntax enable
+
+let g:python3_host_prog = '/home/coma/.cache/pypoetry/virtualenvs/py3nvim-qpdfuwg7-py3.9/bin/python'
 
 " Bindings
 let mapleader = " "
@@ -141,13 +146,13 @@ nnoremap <silent> <leader>oc q:
 nnoremap <silent> <leader>os q/
 nnoremap <silent> <leader>ob q?
 
-" Editing<silent>
+" Editing
 nnoremap <silent> - :pu _<cr>
 nnoremap <silent> Y y$
 nnoremap <silent> _ :pu! _<cr>
 nnoremap <silent> <leader><cr> :w<CR>
 
-" Panes
+" Tabs
 nnoremap <silent> <leader>tc :tabclose<cr>
 nnoremap <silent> <leader>tp :tabp<cr>
 nnoremap <silent> <leader>tn :tabn<cr>

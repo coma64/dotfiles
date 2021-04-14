@@ -3,4 +3,5 @@
     "clangd.arguments": ["--fallback-style=webkit"],
     "explorer.icon.enableNerdfont": true,
     "explorer.width": 30
+    /* "diagnostic.enable": false */
 }
