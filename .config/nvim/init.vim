@@ -5,7 +5,7 @@
 " fzf
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 " polyglot
-let g:polyglot_disabled = ['sh']
+let g:polyglot_disabled = ['sh', 'zinit']
 " vim-rainbow
 let g:rainbow_active = 1
 " vimspector
@@ -43,6 +43,7 @@ if dein#load_state('/home/coma/.cache/dein')
     call dein#add('/home/coma/.cache/dein/repos/github.com/Shougo/dein.vim')
 
     call dein#add('/home/coma/.fzf')
+    call dein#add('mg979/vim-studio-dark')
     call dein#add('KeitaNakamura/neodark.vim')
     call dein#add('chrisbra/Colorizer')
     call dein#add('cohama/lexima.vim')
@@ -77,14 +78,26 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
+" let g:airline_powerline_fonts = 1
+" let g:airline#extensions#whitespace#enabled = 0
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline_theme='neodark'
+
+" let g:tokyonight_style = 'night'
+" let g:tokyonight_enable_italic = 1
+" colorscheme tokyonight
+
+" Theme
+set background=dark
+let g:Vsd = {}
+let g:Vsd.contrast = 2  " low medium (default) high
+colorscheme tomorrow_eighties
+
+" Airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='neodark'
-
-let g:tokyonight_style = 'night'
-let g:tokyonight_enable_italic = 1
-colorscheme tokyonight
 
 highlight ColorColumn ctermbg=grey guibg=grey
 
@@ -107,7 +120,7 @@ set nofoldenable
 set nowrap
 set nowritebackup
 set number
-set relativenumber
+set relativenumber " makes zsh syntax highlighting laggy
 set scrolloff=0
 set shiftwidth=4
 set shortmess+=c
@@ -274,8 +287,17 @@ nnoremap <silent><nowait> <leader>CP  :<C-u>CocListResume<cr>
 nnoremap <silent><leader>e :CocCommand explorer --sources=file+<cr>
 nnoremap <silent> <leader>E <cmd>call g:CocExplorerAtCurBuf()<cr>
 
-" .fish files highlighting
-autocmd BufReadPost *.html syntax on
+augroup fish
+  autocmd!
+  " .fish files highlighting
+  autocmd BufReadPost *.html syntax on
+augroup end
+
+augroup zsh
+  autocmd!
+  " .zsh highlighting is extremely slow with nru
+  autocmd BufReadPost *.zsh set norelativenumber
+augroup end
 
 function! g:CocExplorerAtCurBuf() abort
     let cur_buf_dir = expand('%:h')
