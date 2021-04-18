@@ -3,80 +3,80 @@
 
 " Plugin Settings
 " fzf
-let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
-" polyglot
-let g:polyglot_disabled = ['sh', 'zinit']
-" vim-rainbow
-let g:rainbow_active = 1
-" vimspector
-let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
-" coc
-let g:coc_global_extensions = [
-    \ 'coc-clangd',
-    \ 'coc-cmake',
-    \ 'coc-emmet',
-    \ 'coc-explorer',
-    \ 'coc-git',
-    \ 'coc-html',
-    \ 'coc-json',
-    \ 'coc-lists',
-    \ 'coc-markdownlint',
-    \ 'coc-pyright',
-    \ 'coc-python',
-    \ 'coc-sh',
-    \ 'coc-toml',
-    \ 'coc-tsserver',
-    \ 'coc-vimlsp',
-    \ 'coc-xml',
-    \ 'coc-yaml'
-\ ]
-" vimspector
-let g:vimspector_install_gadgets = [
-    \ 'debugpy',
-    \ 'vscode-cpptools'
-\ ]
+" let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+" " polyglot
+" let g:polyglot_disabled = ['sh', 'zinit']
+" " vim-rainbow
+" let g:rainbow_active = 1
+" " vimspector
+" let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+" " coc
+" let g:coc_global_extensions = [
+"     \ 'coc-clangd',
+"     \ 'coc-cmake',
+"     \ 'coc-emmet',
+"     \ 'coc-explorer',
+"     \ 'coc-git',
+"     \ 'coc-html',
+"     \ 'coc-json',
+"     \ 'coc-lists',
+"     \ 'coc-markdownlint',
+"     \ 'coc-pyright',
+"     \ 'coc-python',
+"     \ 'coc-sh',
+"     \ 'coc-toml',
+"     \ 'coc-tsserver',
+"     \ 'coc-vimlsp',
+"     \ 'coc-xml',
+"     \ 'coc-yaml'
+" \ ]
+" " vimspector
+" let g:vimspector_install_gadgets = [
+"     \ 'debugpy',
+"     \ 'vscode-cpptools'
+" \ ]
 
-set runtimepath+=/home/coma/.cache/dein/repos/github.com/Shougo/dein.vim
+" set runtimepath+=/home/coma/.cache/dein/repos/github.com/Shougo/dein.vim
 
-if dein#load_state('/home/coma/.cache/dein')
-    call dein#begin('/home/coma/.cache/dein')
-    call dein#add('/home/coma/.cache/dein/repos/github.com/Shougo/dein.vim')
+" if dein#load_state('/home/coma/.cache/dein')
+"     call dein#begin('/home/coma/.cache/dein')
+"     call dein#add('/home/coma/.cache/dein/repos/github.com/Shougo/dein.vim')
 
-    call dein#add('/home/coma/.fzf')
-    call dein#add('mg979/vim-studio-dark')
-    call dein#add('KeitaNakamura/neodark.vim')
-    call dein#add('chrisbra/Colorizer')
-    call dein#add('cohama/lexima.vim')
-    call dein#add('frazrepo/vim-rainbow')
-    call dein#add('ghifarit53/tokyonight-vim')
-    call dein#add('junegunn/fzf.vim')
-    call dein#add('neoclide/coc.nvim/', { 'rev': 'release' })
-    call dein#add('preservim/tagbar')
-    call dein#add('puremourning/vimspector')
-    call dein#add('rhysd/clever-f.vim')
-    call dein#add('sheerun/vim-polyglot')
-    call dein#add('simnalamburt/vim-mundo')
-    call dein#add('tpope/vim-commentary')
-    call dein#add('tpope/vim-dispatch')
-    call dein#add('tpope/vim-fugitive')
-    call dein#add('tpope/vim-sensible')
-    call dein#add('tpope/vim-surround')
-    call dein#add('vim-airline/vim-airline')
+"     call dein#add('/home/coma/.fzf')
+"     call dein#add('mg979/vim-studio-dark')
+"     call dein#add('KeitaNakamura/neodark.vim')
+"     call dein#add('chrisbra/Colorizer')
+"     call dein#add('cohama/lexima.vim')
+"     call dein#add('frazrepo/vim-rainbow')
+"     call dein#add('ghifarit53/tokyonight-vim')
+"     call dein#add('junegunn/fzf.vim')
+"     call dein#add('neoclide/coc.nvim/', { 'rev': 'release' })
+"     call dein#add('preservim/tagbar')
+"     call dein#add('puremourning/vimspector')
+"     call dein#add('rhysd/clever-f.vim')
+"     call dein#add('sheerun/vim-polyglot')
+"     call dein#add('simnalamburt/vim-mundo')
+"     call dein#add('tpope/vim-commentary')
+"     call dein#add('tpope/vim-dispatch')
+"     call dein#add('tpope/vim-fugitive')
+"     call dein#add('tpope/vim-sensible')
+"     call dein#add('tpope/vim-surround')
+"     call dein#add('vim-airline/vim-airline')
 
-    call dein#end()
-    call dein#save_state()
-endif
+"     call dein#end()
+"     call dein#save_state()
+" endif
 
-if dein#check_install()
-  call dein#install()
-endif
+" if dein#check_install()
+"   call dein#install()
+" endif
 
 " Theme
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
+" if exists('+termguicolors')
+"   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"   set termguicolors
+" endif
 
 " let g:airline_powerline_fonts = 1
 " let g:airline#extensions#whitespace#enabled = 0
@@ -88,60 +88,60 @@ endif
 " colorscheme tokyonight
 
 " Theme
-set background=dark
-let g:Vsd = {}
-let g:Vsd.contrast = 2  " low medium (default) high
-colorscheme tomorrow_eighties
+" set background=dark
+" let g:Vsd = {}
+" let g:Vsd.contrast = 2  " low medium (default) high
+" colorscheme tomorrow_eighties
 
 " Airline
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='neodark'
+" let g:airline_powerline_fonts = 1
+" let g:airline#extensions#whitespace#enabled = 0
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline_theme='neodark'
 
 highlight ColorColumn ctermbg=grey guibg=grey
 
 " Nvim Settings
-set clipboard^=unnamedplus
-set cmdheight=2
-set colorcolumn=100
-set completeopt-=preview
-set expandtab
-set foldmethod=indent
-set hidden
-set hlsearch
-set ignorecase
-set lcs=eol:¬,space:·,tab:――⇀
-set list
-set ls=2
-set nobackup
-set nocompatible
-set nofoldenable
-set nowrap
-set nowritebackup
-set number
-set relativenumber " makes zsh syntax highlighting laggy
-set scrolloff=0
-set shiftwidth=4
-set shortmess+=c
-set smartcase
-set smartindent
-set smarttab
-set softtabstop=4
-set tabstop=4
-set undodir=~/.cache/vim/undodir
-set undofile
-set updatetime=50
-set wildmode=list:longest
+" set clipboard^=unnamedplus
+" set cmdheight=2
+" set colorcolumn=100
+" set completeopt-=preview
+" set expandtab
+" set foldmethod=indent
+" set hidden
+" set hlsearch
+" set ignorecase
+" set lcs=eol:¬,space:·,tab:――⇀
+" set list
+" set ls=2
+" set nobackup
+" set nocompatible
+" set nofoldenable
+" set nowrap
+" set nowritebackup
+" set number
+" set relativenumber " makes zsh syntax highlighting laggy
+" set scrolloff=0
+" set shiftwidth=4
+" set shortmess+=c
+" set smartcase
+" set smartindent
+" set smarttab
+" set softtabstop=4
+" set tabstop=4
+" set undodir=~/.cache/vim/undodir
+" set undofile
+" set updatetime=50
+" set wildmode=list:longest
 
-if has("patch-8.1.1564")
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
+" if has("patch-8.1.1564")
+"   set signcolumn=number
+" else
+"   set signcolumn=yes
+" endif
 
-filetype plugin indent on
-syntax enable
+" filetype plugin indent on
+" syntax enable
 
 let g:python3_host_prog = '/home/coma/.cache/pypoetry/virtualenvs/py3nvim-qpdfuwg7-py3.9/bin/python'
 
