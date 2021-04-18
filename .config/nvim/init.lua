@@ -1,9 +1,7 @@
 require 'settings'
 require 'plugins'
+require 'keymaps'
+require 'gutils'
+require 'autocommands'
 
-function _G.dump(...)
-    local objects = vim.tbl_map(vim.inspect, {...})
-    print(unpack(objects))
-end
-
-vim.api.nvim_command 'source /home/coma/.config/nvim/init.vim'
+vim.api.nvim_command('source ' .. vim.fn.stdpath('config') .. '/vimscript/commands.vim')

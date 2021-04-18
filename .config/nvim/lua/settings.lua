@@ -7,17 +7,18 @@ if vim.fn.exists('+termguicolors') then
   vim.o.termguicolors = true
 end
 
-if vim.fn.has('patch-8.1.1564') then
-    vim.wo.signcolumn = 'number'
-else
-    vim.wo.signcolumn = 'yes'
-end
+vim.api.nvim_command('filetype plugin indent on')
+vim.api.nvim_command('highlight ColorColumn ctermbg=grey guibg=grey')
+vim.api.nvim_command('syntax enable')
 
-vim.o.completeopt = 'menu'
+vim.o.background = 'dark'
+vim.o.backup = false
 vim.o.clipboard = 'unnamedplus'
 vim.o.cmdheight = 2
--- vim.o.colorcolumn = 100 -- requires string
+vim.o.compatible = false
+vim.o.completeopt = 'menu'
 vim.o.expandtab = true
+vim.o.foldenable = false
 vim.o.foldmethod = 'indent'
 vim.o.hidden = true
 vim.o.hlsearch = true
@@ -25,13 +26,6 @@ vim.o.ignorecase = true
 vim.o.lcs = 'eol:¬,space:·,tab:――⇀'
 vim.o.list = true
 vim.o.ls = 2
-vim.o.backup = false
-vim.o.compatible = false
-vim.o.foldenable = false
-vim.o.wrap = false
-vim.o.writebackup = false
-vim.wo.number = true
-vim.wo.relativenumber = true --makes zsh syntax highlighting laggy
 vim.o.scrolloff = 0
 vim.o.shiftwidth = 4
 vim.o.shortmess = vim.o.shortmess .. 'c'
@@ -40,14 +34,17 @@ vim.o.smartindent = true
 vim.o.smarttab = true
 vim.o.softtabstop = 4
 vim.o.tabstop = 4
-vim.o.undodir = '~/.cache/vim/undodir'
+vim.o.undodir = vim.fn.stdpath('cache') .. '/undodir'
 vim.o.undofile = true
+vim.bo.undofile = true
 vim.o.updatetime = 50
 vim.o.wildmode = 'list:longest'
-vim.o.background = 'dark'
-
-vim.api.nvim_command('filetype plugin indent on')
-vim.api.nvim_command('syntax enable')
+vim.o.wrap = false
+vim.o.writebackup = false
+vim.wo.colorcolumn = '100'
+vim.wo.number = true
+vim.wo.relativenumber = true --makes zsh syntax highlighting laggy
+vim.wo.signcolumn = 'yes'
 
 -- Theme
 vim.g.Vsd = { contrast = 2 }
@@ -60,7 +57,7 @@ vim.g.airline_extensions_tabline_enabled = 1
 vim.g.airline_theme = 'neodark'
 
 -- fzf
-vim.g.fzf_layout = { window = { width = 0.8, height = 0.8 } }
+vim.g.fzf_layout = { window = { width = 0.8, height = 0.4 } }
 
 -- polyglot
 vim.g.polyglot_disabled = { 'sh', 'zinit' }
@@ -91,6 +88,7 @@ vim.g.coc_global_extensions = {
     'coc-xml',
     'coc-yaml'
 }
+vim.g.python3_host_prog = '/home/coma/.cache/pypoetry/virtualenvs/py3nvim-qpdfuwg7-py3.9/bin/python'
 
 -- vimspector
 vim.g.vimspector_install_gadgets = {

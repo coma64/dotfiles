@@ -40,7 +40,8 @@ packer.startup(function(use)
   -- Lazy loading:
   use {
     'tpope/vim-dispatch',
-    -- cmd = { 'Dispatch', 'Make', 'Focus', 'Start' }
+    cmd = { 'Dispatch', 'Make', 'Focus', 'Start' },
+    opt = true
   }
 
   use {
@@ -49,7 +50,7 @@ packer.startup(function(use)
     cmd = {
       'Files',
       'GFiles',
-      'GFiles?',
+      'GFiles',
       'Buffers',
       'Colors',
       'Ag',
@@ -62,8 +63,8 @@ packer.startup(function(use)
       'Windows',
       'Locate',
       'History',
-      'History:',
-      'History/',
+      'History',
+      'History',
       'Snippets',
       'Commits',
       'BCommits',
@@ -71,12 +72,13 @@ packer.startup(function(use)
       'Maps',
       'Helptags',
       'Filetypes'
-    }
+    },
+    opt = true
   }
 
   use {
     'puremourning/vimspector',
-    ft = {'py'},
-    cmd = 'VimspectorContinue'
+    cmd = 'VimspectorContinue',
+    opt = true
   }
 end)
