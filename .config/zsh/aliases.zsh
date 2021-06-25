@@ -1,8 +1,8 @@
-alias a='fasd -a'
 alias af='alias-finder -l'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias at='fasd -f -e bat'
 alias b='br'
+alias bm='batman'
 alias bb='fasd_broot'
 alias c="br -h ${HOME}/.config"
 alias cap="bat /sys/class/power_supply/BAT0/capacity"
@@ -10,14 +10,12 @@ alias color-test="msgcat --color=test"
 alias config="git --git-dir=${HOME}/.local/share/dotfiles --work-tree=${HOME}/"
 alias cp='cp -i'
 alias cpr='rsync --archive -hh --partial --info=stats1 --info=progress2 --modify-window=1'
-alias d="br -g ${HOME}/dev"
-alias d='fasd -d'
+alias d="br -g ${HOME}/development/"
 alias df='df -h'
 alias doas='doas '
 alias du='du -h'
 alias elev-priv="$(type 'sudo' &> /dev/null && echo 'sudo ' || echo 'doas ')"
 alias exchr='curl rate.sx'
-alias f='fasd -f'
 alias free='free -h'
 alias gitpkg='pacman -Q | grep -i "\-git" | wc -l'
 alias gpg-check='gpg2 --keyserver-options auto-key-retrieve --verify'

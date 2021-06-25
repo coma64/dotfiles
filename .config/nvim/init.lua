@@ -1,3 +1,6 @@
+-- evilline
+-- telescope
+
 require 'settings'
 require 'plugins'
 require 'keymaps'
