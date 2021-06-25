@@ -1,0 +1,6 @@
+# nvim
+.config/nvim/plugin/
+
+# zsh
+.config/zsh/.zcompdump
+*.zwc
