@@ -183,7 +183,7 @@ if [ -f "${ZDOTDIR}/lib.zsh" ]; then
     source "${ZDOTDIR}/lib.zsh" 
 fi
 
-neofetch
+# neofetch
 
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.dotfiles/.config/zsh/.p10k.zsh ]] || source ~/.dotfiles/.config/zsh/.p10k.zsh
