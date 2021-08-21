@@ -31,9 +31,10 @@ packer.startup(function(use)
   use 'tpope/vim-sensible'
   use 'tpope/vim-surround'
   use 'vim-airline/vim-airline'
+  use 'vimwiki/vimwiki'
 
   use {
-    'neoclide/coc.nvim/',
+    'neoclide/coc.nvim',
     branch = 'release'
   }
 
@@ -45,7 +46,7 @@ packer.startup(function(use)
   }
 
   use {
-    '~/.fzf',
+    '~/.local/src/fzf',
     requires = {'junegunn/fzf.vim'},
     cmd = {
       'Files',

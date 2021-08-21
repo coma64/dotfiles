@@ -2,8 +2,9 @@
 -- .o .wo unterschiede
 
 if vim.fn.exists('+termguicolors') then
-  vim.o.t_8f = '\\<Esc>[38;2;%lu;%lu;%lum'
-  vim.o.t_8b = '\\<Esc>[48;2;%lu;%lu;%lum'
+  vim.wo.t_8f = '\\<Esc>[38;2;%lu;%lu;%lum'
+  vim.wo.t_8b = '\\<Esc>[48;2;%lu;%lu;%lum'
+  vim.wo.t_Co = '256'
   vim.o.termguicolors = true
 end
 
@@ -45,6 +46,7 @@ vim.wo.colorcolumn = '100'
 vim.wo.number = true
 vim.wo.relativenumber = true --makes zsh syntax highlighting laggy
 vim.wo.signcolumn = 'yes'
+vim.wo.conceallevel = 1
 
 -- Theme
 vim.g.Vsd = { contrast = 2 }

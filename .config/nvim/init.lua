@@ -1,8 +1,8 @@
 -- evilline
 -- telescope
 
-require 'settings'
 require 'plugins'
+require 'settings'
 require 'keymaps'
 require 'gutils'
 require 'autocommands'
