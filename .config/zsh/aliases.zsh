@@ -10,7 +10,7 @@ alias color-test="msgcat --color=test"
 alias config="git --git-dir=${HOME}/.local/share/dotfiles --work-tree=${HOME}/"
 alias cp='cp -i'
 alias cpr='rsync --archive -hh --partial --info=stats1 --info=progress2 --modify-window=1'
-alias d="br -g ${HOME}/development/"
+alias d="br -g ${DEVELOPMENT_FOLDER}/"
 alias df='df -h'
 alias doas='doas '
 alias du='du -h'

@@ -50,7 +50,7 @@ setopt pushdminus
 
 # History
 setopt append_history 
-setopt inc_append_history 
+#setopt inc_append_history 
 setopt extended_history
 HISTSIZE=50000
 SAVEHIST=10000
@@ -106,8 +106,8 @@ zinit ice wait lucid
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/extract/extract.plugin.zsh
-zinit ice wait lucid
-zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
+# zinit ice wait lucid
+# zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
 bgnotify_threshold=30
 zinit ice wait lucid
 zinit snippet OMZ::plugins/bgnotify/bgnotify.plugin.zsh
@@ -132,6 +132,8 @@ zinit ice wait lucid
 zinit snippet OMZ::plugins/history/history.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/autoenv/autoenv.plugin.zsh
 
 zinit ice lucid wait
 zinit light willghatch/zsh-saneopt
@@ -164,11 +166,15 @@ zstyle ':completion:*' cache-path ~/.cache/zcache
 autoload -U +X bashcompinit && bashcompinit
 
 # broot
-source '/home/coma/.config/broot/launcher/bash/br'
+source "${HOME}/.config/broot/launcher/bash/br"
 # thefuck (default alias: fuck)
 eval "$(thefuck --alias)"
 # fasd
 eval "$(fasd --init auto)"
+# pyenv
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # fzf
 FZF_BASE="${HOME}/.fzf"
