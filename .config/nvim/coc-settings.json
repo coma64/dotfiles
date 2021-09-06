@@ -1,7 +1,13 @@
 {
-    //"coc.preferences.formatOnSaveFiletypes": ["cpp", "py"],
     "clangd.arguments": ["--fallback-style=webkit"],
     "explorer.icon.enableNerdfont": true,
-    "explorer.width": 30
-    /* "diagnostic.enable": false */
+    "explorer.width": 30,
+    "languageserver": {
+        "haskell": {
+          "command": "haskell-language-server-wrapper",
+          "args": ["--lsp"],
+          "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
+          "filetypes": ["haskell", "lhaskell"]
+        }
+    }
 }

@@ -32,6 +32,8 @@ packer.startup(function(use)
   use 'tpope/vim-surround'
   use 'vim-airline/vim-airline'
   use 'vimwiki/vimwiki'
+  use 'neovimhaskell/haskell-vim'
+  -- use 'parsonsmatt/intero-neovim'
 
   use {
     'neoclide/coc.nvim',

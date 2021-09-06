@@ -121,7 +121,7 @@ map(L .. 'fy', ':Filetypes<cr>')
 -- COC
 map('<C-s>', '<Plug>(coc-range-select)', N, { noremap = false })
 map('<C-s>', '<Plug>(coc-range-select)', X, { noremap = false })
-map('<C-space>', 'coc-refresh()', I, { expr = true })
+map('<C-space>', 'coc#refresh()', I, { expr = true })
 map('K', [[:lua require('utils').show_documentation()<cr>]])
 map('[g', '<Plug>(coc-diagnostic-prev)', N, { noremap = false })
 map(']g', '<Plug>(coc-diagnostic-next)', N, { noremap = false })
