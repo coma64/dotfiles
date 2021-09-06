@@ -5,5 +5,8 @@ export MAIL=thunderbird
 export TERM=alacritty
 export EDITOR=nvim
 export VISUAL=nvim
-
-export PATH="${HOME}/.poetry/bin:${PATH}:${HOME}/.local/bin"
+export PATH="${HOME}/.poetry/bin:${PYENV_ROOT}/bin:${HOME}/.local/bin:${PATH}"
+export PYENV_ROOT="${HOME}/.pyenv"
+export DEVELOPMENT_FOLDER="${HOME}/dev"
+export AUTOENV_ENV_FILENAME='.envrc'
+export MAKEFLAGS='-j16'
