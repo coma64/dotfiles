@@ -1,12 +1,22 @@
-# Load .Xresources if it exists
-[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+#!/bin/bash
+#
+# ~/.xinitrc
+#
+# Executed by startx (run your window manager from here)
+userresources=$HOME/.Xresources
+usermodmap=$HOME/.Xmodmap
+sysresources=/etc/X11/xinit/.Xresources
+sysmodmap=/etc/X11/xinit/.Xmodmap
 
-setxkbmap de
-xset r rate 250 50
+if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+    for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+        [ -x "$f" ] && . "$f"
+    done
+    unset f
+fi
 
-# Enable screen locker
-# xautolock -time 10 -locker i3lock-fancy-dualmonitor &
+xrandr --output DP-1 --scale 1.0x1.0
 
-exec dbus-launch --exit-with-session qtile
-#export DESKTOP_SESSION=plasma
-#exec startplasma-x11
+export XDG_SESSION_TYPE=x11
+export GDK_BACKEND=x11
+exec gnome-session
