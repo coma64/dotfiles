@@ -67,12 +67,12 @@ zinit ice as"completion" wait lucid blockf
 zinit snippet OMZ::plugins/github/_hub
 zinit ice as"completion" wait lucid blockf
 zinit snippet OMZ::plugins/rust/_rust
-zinit ice as"completion" wait lucid blockf
-zinit snippet OMZ::plugins/rustup/_rustup
+#zinit ice as"completion" wait lucid blockf
+#zinit snippet OMZ::plugins/rustup/_rustup
 zinit ice as"completion" wait lucid blockf
 zinit snippet OMZ::plugins/fd/_fd
-zinit ice as"completion" wait lucid blockf
-zinit snippet OMZ::plugins/cargo/_cargo
+#zinit ice as"completion" wait lucid blockf
+#zinit snippet OMZ::plugins/cargo/_cargo
 zinit ice as"completion" wait lucid blockf
 zinit snippet OMZ::plugins/docker/_docker
 
@@ -117,8 +117,8 @@ zinit ice wait lucid
 zinit snippet OMZ::plugins/copydir/copydir.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/dnf/dnf.plugin.zsh
-zinit ice wait lucid
-zinit snippet OMZ::plugins/django/django.plugin.zsh
+#zinit ice wait lucid
+#zinit snippet OMZ::plugins/django/django.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/debian/debian.plugin.zsh
 zinit ice wait lucid
