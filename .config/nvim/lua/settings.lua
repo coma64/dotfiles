@@ -42,7 +42,7 @@ vim.o.updatetime = 50
 vim.o.wildmode = 'list:longest'
 vim.o.wrap = false
 vim.o.writebackup = false
-vim.wo.colorcolumn = '100'
+vim.wo.colorcolumn = '120'
 vim.wo.number = true
 vim.wo.relativenumber = true --makes zsh syntax highlighting laggy
 vim.wo.signcolumn = 'yes'
@@ -59,7 +59,7 @@ vim.g.airline_extensions_tabline_enabled = 1
 vim.g.airline_theme = 'neodark'
 
 -- fzf
-vim.g.fzf_layout = { window = { width = 0.8, height = 0.4 } }
+vim.g.fzf_layout = { window = { width = 0.8, height = 0.8 } }
 
 -- polyglot
 vim.g.polyglot_disabled = { 'sh', 'zinit' }
@@ -102,6 +102,7 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
     enable = true,
+    disable = { 'html' },
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.

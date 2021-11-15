@@ -16,12 +16,12 @@ local packer = require 'packer'
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
-  use 'mg979/vim-studio-dark'
+  --use 'mg979/vim-studio-dark'
   use 'KeitaNakamura/neodark.vim'
   use 'chrisbra/Colorizer'
   use 'cohama/lexima.vim'
-  use 'frazrepo/vim-rainbow'
-  use 'ghifarit53/tokyonight-vim'
+  --use 'frazrepo/vim-rainbow'
+  --use 'ghifarit53/tokyonight-vim'
   use 'rhysd/clever-f.vim'
   use 'sheerun/vim-polyglot'
   use 'simnalamburt/vim-mundo'
@@ -33,6 +33,7 @@ packer.startup(function(use)
   -- use 'vimwiki/vimwiki'
   use 'neovimhaskell/haskell-vim'
   -- use 'parsonsmatt/intero-neovim'
+  -- maybe treesitter interferees with polyglot?
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'Th3Whit3Wolf/one-nvim'
   use 'nvim-treesitter/nvim-treesitter-angular'

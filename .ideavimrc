@@ -1,3 +1,6 @@
+" Docs: https://github.com/JetBrains/ideavim#executing-ide-actions
+" Find more examples here: https://jb.gg/share-ideavimrc
+
 set scrolloff=3
 set incsearch
 set clipboard=unnamedplus
@@ -103,5 +106,3 @@ nnoremap <Leader>z :action ToggleZenMode<CR>
 "nmap <leader>i ~hi
 " Remove selection and toggle case. E.g. `v2l<leader>u`: `getProperty` -> `property`
 "vmap <leader>u d~h
-
-" Find more examples here: https://jb.gg/share-ideavimrc
