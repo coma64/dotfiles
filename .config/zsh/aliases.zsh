@@ -44,6 +44,7 @@ alias wttr="curl --silent \"wttr.in/$(ipinfo | jq '.city')\""
 alias yta='youtube-dl --extract-audio --audio-format mp3'
 alias ytv='youtube-dl -f bestvideo+bestaudio'
 alias z='fasd_cd -d'
+alias gcff='fzf-git-checkout'
 
 # Replace yay with paru if installed
 [ ! -x /usr/bin/yay ] && [ -x /usr/bin/paru ] && alias yay='paru'

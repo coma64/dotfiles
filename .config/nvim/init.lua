@@ -7,4 +7,9 @@ require 'keymaps'
 require 'gutils'
 require 'autocommands'
 
-vim.api.nvim_command('source ' .. vim.fn.stdpath('config') .. '/vimscript/commands.vim')
+local config_dir = vim.fn.stdpath('config')
+
+for _, file in pairs({'commands.vim', 'keymaps.vim'}) do
+    vim.api.nvim_command('source ' ..  config_dir .. '/vimscript/commands.vim')
+end
+

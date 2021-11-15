@@ -22,7 +22,6 @@ packer.startup(function(use)
   use 'cohama/lexima.vim'
   use 'frazrepo/vim-rainbow'
   use 'ghifarit53/tokyonight-vim'
-  use 'preservim/tagbar'
   use 'rhysd/clever-f.vim'
   use 'sheerun/vim-polyglot'
   use 'simnalamburt/vim-mundo'
@@ -31,9 +30,12 @@ packer.startup(function(use)
   use 'tpope/vim-sensible'
   use 'tpope/vim-surround'
   use 'vim-airline/vim-airline'
-  use 'vimwiki/vimwiki'
+  -- use 'vimwiki/vimwiki'
   use 'neovimhaskell/haskell-vim'
   -- use 'parsonsmatt/intero-neovim'
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use 'Th3Whit3Wolf/one-nvim'
+  use 'nvim-treesitter/nvim-treesitter-angular'
 
   use {
     'neoclide/coc.nvim',

@@ -24,7 +24,7 @@ vim.o.foldmethod = 'indent'
 vim.o.hidden = true
 vim.o.hlsearch = true
 vim.o.ignorecase = true
-vim.o.lcs = 'eol:¬,space:·,tab:――⇀'
+-- vim.o.lcs = 'eol:¬,space:·,tab:――⇀'
 vim.o.list = true
 vim.o.ls = 2
 vim.o.scrolloff = 0
@@ -50,7 +50,7 @@ vim.wo.conceallevel = 1
 
 -- Theme
 vim.g.Vsd = { contrast = 2 }
-vim.api.nvim_command('colorscheme tomorrow_eighties')
+vim.api.nvim_command('colorscheme one-nvim')
 
 -- Airline
 vim.g.airline_powerline_fonts = 1
@@ -67,9 +67,6 @@ vim.g.polyglot_disabled = { 'sh', 'zinit' }
 -- vim-rainbow
 vim.g.rainbow_active = true
 
--- vimspector
-vim.g.vimspector_enable_mappings = 'VISUAL_STUDIO'
-
 -- coc
 vim.g.coc_global_extensions = {
     'coc-clangd',
@@ -82,18 +79,34 @@ vim.g.coc_global_extensions = {
     'coc-lists',
     'coc-markdownlint',
     'coc-pyright',
-    'coc-python',
     'coc-sh',
     'coc-toml',
     'coc-tsserver',
     'coc-vimlsp',
     'coc-xml',
-    'coc-yaml'
+    'coc-yaml',
+    'coc-tslint-plugin',
 }
-vim.g.python3_host_prog = '/home/coma/.cache/pypoetry/virtualenvs/py3nvim-qpdfuwg7-py3.9/bin/python'
+-- vim.g.python3_host_prog = '/home/zaton/.local/share/nvim-venv/.venv/bin/python'
 
 -- vimspector
+vim.g.vimspector_enable_mappings = 'VISUAL_STUDIO'
+
 vim.g.vimspector_install_gadgets = {
   'debugpy',
   'vscode-cpptools'
 }
+
+-- nvim-treesitter
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+
