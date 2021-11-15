@@ -1,0 +1,107 @@
+set scrolloff=3
+set incsearch
+set clipboard=unnamedplus
+set history=200
+set showcmd
+set hlsearch
+set ignorecase
+set smartcase
+set showmode
+set number relativenumber
+" Smart join for <C-J>
+set ideajoin
+" Map vim marks to IDEA global marks
+set ideamarks
+set NERDTree
+
+let mapleader = " "
+
+map <leader>f gq
+map <leader>d <Action>(Debug)
+map <leader>b <Action>(ToggleLineBreakpoint)
+
+" Highlight the element under the caret, and use CMD+G/Shift+CMD+G to iterate over
+nmap gs <Action>(HighlightUsagesInFile)
+nmap ]q <Action>(GotoNextElementUnderCaretUsage)
+nmap [q <Action>(GotoPrevElementUnderCaretUsage)
+
+nmap gD <Action>(GotoTypeDeclaration)
+
+nmap gL <Action>(QuickImplementations)
+nmap gy <Action>(ShowErrorDescription)
+
+nnoremap cc :action CommentByLineComment <CR>
+vnoremap cc :action CommentByLineComment <CR>
+
+nnoremap mp :action PasteMultiple <CR>
+nnoremap R :action RenameElement <CR>
+
+nnoremap ,a :action GotoAction <CR>
+vnoremap ,a :action GotoAction <CR>
+
+" split window
+nnoremap <leader>sv :action SplitVertically <CR>
+nnoremap <leader>sc :action UnsplitAll <CR>
+nnoremap <leader>v :action NextSplitter <CR>
+
+
+nmap <leader>fp :action FindInPath<CR>
+vmap <leader>fp :action FindInPath<CR>
+nnoremap U :action FindUsages <CR>
+vnoremap U :action FindUsages <CR>
+nnoremap ,e :action SearchEverywhere <CR>
+
+" tabs
+nmap <leader>h :action PreviousTab<CR>
+nmap <leader>l :action NextTab<CR>
+nmap <leader>bd :action CloseEditor<CR>
+" nnoremap <leader>c :action CloseContent <CR>
+
+" extract
+nnoremap <leader>iv :action IntroduceVariable <CR>
+nnoremap <leader>em :action ExtractMethod  <Cr>
+vnoremap <leader>em :action ExtractMethod  <Cr>
+nnoremap <leader>ic :action IntroduceConstant <CR>
+
+" file navigation
+nnoremap gh :action Back <CR>
+nnoremap gl :action Forward <CR>
+nnoremap gj :action MethodDown <CR>
+nnoremap gk :action MethodUp <CR>
+nnoremap gs :action GotoSuperMethod <CR>
+nnoremap gi :action GotoImplementation <CR>
+nnoremap g, :action JumpToLastChange <CR>
+nnoremap g. :action JumpToNextChange <CR>
+nnoremap gd :action GotoDeclaration <CR>
+nnoremap gr :action RecentFiles <CR>
+nnoremap <leader>gc :action GotoClass <CR>
+vnoremap <leader>gc :action GotoClass <CR>
+nnoremap <leader>gf :action GotoFile <CR>
+vnoremap <leader>gf :action GotoFile <CR>
+nnoremap <leader>ww :action HideAllWindows <CR>
+nnoremap gp :NERDTree <CR>
+nnoremap <leader>gt :action GotoTest <CR>
+nnoremap <leader>rc :action RunClass <CR>
+nnoremap ,rc :action ChooseRunConfiguration <CR>
+nnoremap <leader>gq :action QuickList.Git <CR>
+nnoremap <leader>ns :action NewScratchFile <CR>
+nnoremap <leader>nf :action NewElementSamePlace <CR>
+nnoremap <leader>ge :action Generate<CR>
+vnoremap <leader>re :action Replace<CR>
+nnoremap <leader>re :action Replace<CR>
+vnoremap / :action Find<CR>
+nnoremap / :action Find<CR>
+nnoremap <leader>ss :action SelectInProjectView<CR>
+
+
+nnoremap <Leader>s :action FileStructurePopup<CR>
+nnoremap <Leader>v :action Vcs.QuickListPopupAction<CR>
+nnoremap <Leader>b :action Vcs.ShowBranches<CR>
+nnoremap <Leader>z :action ToggleZenMode<CR>
+
+" Toggle case and start typing. E.g. `<leader>iget`: `property` -> `getProperty`
+"nmap <leader>i ~hi
+" Remove selection and toggle case. E.g. `v2l<leader>u`: `getProperty` -> `property`
+"vmap <leader>u d~h
+
+" Find more examples here: https://jb.gg/share-ideavimrc
