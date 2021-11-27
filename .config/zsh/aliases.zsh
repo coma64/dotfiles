@@ -31,6 +31,7 @@ alias mvr='rsync --archive -hh --partial --info=stats1 --info=progress2 --modify
 alias n='nvim'
 alias nethogs='nethogs -v 3 -d 0.1'
 alias nn='fasd -f -e nvim'
+alias no='br ${HOME}/notes'
 alias po='elev-priv poweroff'
 alias pscpu='ps ax o user,pid,pcpu,pmem,time,comm k -pcpu | head'
 alias psmem='ps ax o user,pid,pcpu,pmem,time,comm k -pmem | head'
