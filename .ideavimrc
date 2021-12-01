@@ -42,9 +42,9 @@ nnoremap g, :action JumpToLastChange<cr>
 nnoremap g. :action JumpToNextChange<cr>
 nnoremap gc :action GotoClass<cr>
 nnoremap gd :action GotoDeclaration<cr>
-nnoremap ge :action Generate<cr>
+"nnoremap ge :action Generate<cr>
 nnoremap gf :action GotoFile<cr>
-nnoremap gg :action SearchEverywhere<cr>
+nnoremap ge :action SearchEverywhere<cr>
 nnoremap gh :action Back<cr>
 nnoremap gi :action GotoImplementation<cr>
 nnoremap gj :action MethodDown<cr>

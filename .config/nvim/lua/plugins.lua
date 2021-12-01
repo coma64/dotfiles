@@ -12,6 +12,8 @@ end
 vim.cmd [[packadd packer.nvim]]
 local packer = require 'packer'
 
+vim.g.polyglot_disabled = { 'sh', 'zinit' }
+
 -- Specify packages
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
