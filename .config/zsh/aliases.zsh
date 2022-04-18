@@ -12,6 +12,7 @@ alias mv='mv -i'
 alias grep='grep --color=auto'
 alias free='free -h'
 alias pacman='paru'
+alias bat='batcat'
 
 alias b='br'
 alias bm='batman'
