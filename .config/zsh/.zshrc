@@ -66,7 +66,7 @@ zinit light romkatv/powerlevel10k
 zinit ice as"completion" wait lucid blockf
 zinit snippet OMZ::plugins/github/_hub
 zinit ice as"completion" wait lucid blockf
-zinit snippet OMZ::plugins/rust/_rust
+zinit snippet OMZ::plugins/rust/_rustc
 zinit ice as"completion" wait lucid blockf
 zinit snippet OMZ::plugins/fd/_fd
 zinit ice as"completion" wait lucid blockf
