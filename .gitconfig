@@ -1,0 +1,24 @@
+[user]
+	email = coma64@outlook.com
+	name = coma64
+[interactive]
+	diffFilter = diff-so-fancy --patch
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	func = 146 bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[color]
+	ui = true
+[pull]
+	rebase = true
