@@ -4,16 +4,16 @@ utils.create_augroup(
     'zsh',
     {
         {
-            event = 'BufReadPost', pattern = '*.zsh', command = 'set norelativenumber'
+            event = 'BufReadPost', pattern = '*.zsh', command = 'setlocal norelativenumber'
         },
         {
-            event = 'BufReadPost', pattern = '.zshrc', command = 'set norelativenumber'
+            event = 'BufReadPost', pattern = '.zshrc', command = 'setlocal norelativenumber'
         },
         {
-            event = 'BufReadPost', pattern = '.zshenv', command = 'set norelativenumber'
+            event = 'BufReadPost', pattern = '.zshenv', command = 'setlocal norelativenumber'
         },
         {
-            event = 'BufReadPost', pattern = '.zprofile', command = 'set norelativenumber'
+            event = 'BufReadPost', pattern = '.zprofile', command = 'setlocal norelativenumber'
         }
     }
 )
@@ -22,7 +22,7 @@ utils.create_augroup(
     'coc',
     {
         {
-            event = 'FileType', pattern = 'typescript,json', command = "setl formatexpr=CocAction('formatSelected')"
+            event = 'FileType', pattern = 'typescript,json', command = "setlocal formatexpr=CocAction('formatSelected')"
         },
         {
             event = 'User', pattern = 'CocJumpPlaceholder', command = "call CocActionAsync('showSignatureHelp')"

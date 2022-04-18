@@ -67,15 +67,15 @@ zinit ice as"completion" wait lucid blockf
 zinit snippet OMZ::plugins/github/_hub
 zinit ice as"completion" wait lucid blockf
 zinit snippet OMZ::plugins/rust/_rust
-#zinit ice as"completion" wait lucid blockf
-#zinit snippet OMZ::plugins/rustup/_rustup
 zinit ice as"completion" wait lucid blockf
 zinit snippet OMZ::plugins/fd/_fd
-#zinit ice as"completion" wait lucid blockf
-#zinit snippet OMZ::plugins/cargo/_cargo
 zinit ice as"completion" wait lucid blockf
 zinit snippet OMZ::plugins/docker/_docker
+zinit ice as"completion" wait lucid blockf
+zinit snippet OMZ::plugins/ng/_ng
 
+zinit ice wait lucid
+zinit snippet OMZ::plugins/rust/rust.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/fancy-ctrl-z/fancy-ctrl-z.plugin.zsh
 zinit ice wait lucid
@@ -87,51 +87,24 @@ ZSH_AUTOSUGGEST_MANUAL_REBIND=true
 zinit ice wait lucid atload'_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
 zinit ice lucid wait
-zinit snippet OMZ::plugins/vscode/vscode.plugin.zsh
-zinit ice lucid wait
 zinit snippet OMZ::plugins/rsync/rsync.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/alias-finder/alias-finder.plugin.zsh
-zinit ice wait lucid
-zinit snippet OMZ::plugins/npm/npm.plugin.zsh
-zinit ice wait lucid
-zinit snippet OMZ::plugins/node/node.plugin.zsh
-zinit ice wait lucid
-zinit snippet OMZ::plugins/pip/pip.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/archlinux/archlinux.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/extract/extract.plugin.zsh
-# zinit ice wait lucid
-# zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
 bgnotify_threshold=30
 zinit ice wait lucid
 zinit snippet OMZ::plugins/bgnotify/bgnotify.plugin.zsh
 zinit ice wait lucid
-zinit snippet OMZ::plugins/copybuffer/copybuffer.plugin.zsh
-zinit ice wait lucid
-zinit snippet OMZ::plugins/copydir/copydir.plugin.zsh
-zinit ice wait lucid
-zinit snippet OMZ::plugins/dnf/dnf.plugin.zsh
-#zinit ice wait lucid
-#zinit snippet OMZ::plugins/django/django.plugin.zsh
-zinit ice wait lucid
-zinit snippet OMZ::plugins/debian/debian.plugin.zsh
-zinit ice wait lucid
-zinit snippet OMZ::plugins/taskwarrior/taskwarrior.plugin.zsh
-PROJECT_PATHS=("${HOME}/dev/*")
-zinit ice wait lucid
-zinit snippet OMZ::plugins/pj/pj.plugin.zsh
-zinit ice wait lucid
 zinit snippet OMZ::plugins/nmap/nmap.plugin.zsh
 zinit ice wait lucid
-zinit snippet OMZ::plugins/history/history.plugin.zsh
-# zinit ice wait lucid
-# zinit snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
-zinit ice wait lucid
 zinit snippet OMZ::plugins/autoenv/autoenv.plugin.zsh
+zinit ice wait lucid
+zinit snippet OMZ::plugins/asdf/asdf.plugin.zsh
 
 zinit ice lucid wait
 zinit light willghatch/zsh-saneopt
@@ -184,12 +157,14 @@ zinit ice wait lucid
 zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh
 
 if [ -f "${ZDOTDIR}/aliases.zsh" ]; then
-    source "${ZDOTDIR}/aliases.zsh" 
+    source "${ZDOTDIR}/aliases.zsh"
 fi
 
 if [ -f "${ZDOTDIR}/lib.zsh" ]; then
-    source "${ZDOTDIR}/lib.zsh" 
+    source "${ZDOTDIR}/lib.zsh"
 fi
+
+[ -f "/opt/asdf-vm/asdf.sh" ] && source "/opt/asdf-vm/asdf.sh"
 
 # neofetch
 

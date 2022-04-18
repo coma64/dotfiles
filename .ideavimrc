@@ -15,51 +15,82 @@ set smartcase
 
 let mapleader = " "
 
+" ********
+" nnoremap gn :action SelectInProjectView<cr>
+" nnoremap gs :action FileStructurePopup<cr>
+" nnoremap gp :action FindInPath<cr>
+" nnoremap gk :action MethodUp<cr>
+" nnoremap gh :action Back<cr>
+" nnoremap <leader>e :action ShowErrorDescription<cr>
+" nnoremap <leader>w :action HideAllWindows<cr>
+" nnoremap <leader>z :action ToggleZenMode<cr>
+" nnoremap <leader>r[cvm] :action IntroduceConstant<cr>
+" nnoremap gr :action Refactorings.QuickListPopupAction<cr>
+
+" nnoremap <leader>u :action HighlightUsagesInFile<cr>
 nnoremap / :action Find<cr>
-nnoremap <leader>U :action FindUsages<cr>
+vnoremap / :action Find<cr>
+nnoremap <leader>u :action FindUsages<cr>
+vnoremap <leader>u :action FindUsages<cr>
 nnoremap <leader>b :action ToggleLineBreakpoint<cr>
-nnoremap <leader>c :action CommentByLineComment<cr>
+nnoremap gcc :action CommentByLineComment<cr>
+vnoremap gc :action CommentByLineComment<cr>
 nnoremap <leader>d :action Debug<cr>
 nnoremap <leader>e :action ShowErrorDescription<cr>
-nnoremap <leader>f gq
+nnoremap gn :action SelectInProjectView<cr>
+nnoremap gs :action FileStructurePopup<cr>
+" nnoremap <leader>f gq
+
 nnoremap <leader>h :action PreviousTab<cr>
-nnoremap <leader>i :action QuickImplementations<cr>
 nnoremap <leader>l :action NextTab<cr>
-nnoremap <leader>p :action PasteMultiple<cr>
-nnoremap <leader>rc :action IntroduceConstant<cr>
-nnoremap <leader>re :action Replace<cr>
-nnoremap <leader>rm :action ExtractMethod  <Cr>
-nnoremap <leader>rv :action IntroduceVariable<cr>
 nnoremap <leader>sn :action NextSplitter<cr>
 nnoremap <leader>sv :action SplitVertically<cr>
-nnoremap <leader>u :action HighlightUsagesInFile<cr>
-nnoremap <leader>vb :action Vcs.ShowBranches<cr>
-nnoremap <leader>vv :action Vcs.QuickListPopupAction<cr>
 nnoremap <leader>w :action HideAllWindows<cr>
 nnoremap <leader>z :action ToggleZenMode<cr>
-nnoremap R :action RenameElement<cr>
 nnoremap g, :action JumpToLastChange<cr>
 nnoremap g. :action JumpToNextChange<cr>
-nnoremap gc :action GotoClass<cr>
-nnoremap gd :action GotoDeclaration<cr>
-"nnoremap ge :action Generate<cr>
-nnoremap gf :action GotoFile<cr>
-nnoremap ge :action SearchEverywhere<cr>
-nnoremap gh :action Back<cr>
-nnoremap gi :action GotoImplementation<cr>
 nnoremap gj :action MethodDown<cr>
 nnoremap gk :action MethodUp<cr>
-nnoremap gl :action Forward<cr>
-nnoremap gn :action SelectInProjectView<cr>
-nnoremap gp :action FindInPath<cr>
-nnoremap gs :action FileStructurePopup<cr>
-vnoremap / :action Find<cr>
-vnoremap <leader>U :action FindUsages<cr>
-vnoremap <leader>c :action CommentByLineComment<cr>
-vnoremap <leader>rc :action IntroduceConstant<cr>
-vnoremap <leader>re :action Replace<cr>
-vnoremap <leader>rm :action ExtractMethod<Cr>
-vnoremap <leader>rv :action IntroduceVariable<cr>
 vnoremap gj :action MethodDown<cr>
 vnoremap gk :action MethodUp<cr>
+nnoremap gh :action Back<cr>
+nnoremap gl :action Forward<cr>
+
+nnoremap <leader>i :action QuickImplementations<cr>
+nnoremap <leader>p :action PasteMultiple<cr>
+nnoremap <leader>f :action ReformatCode<cr>
+
+nnoremap <leader>rc :action IntroduceConstant<cr>
+vnoremap <leader>rc :action IntroduceConstant<cr>
+nnoremap <leader>rm :action ExtractMethod  <Cr>
+vnoremap <leader>rm :action ExtractMethod<Cr>
+nnoremap <leader>rv :action IntroduceVariable<cr>
+vnoremap <leader>rv :action IntroduceVariable<cr>
+nnoremap R :action RenameElement<cr>
+vnoremap R :action RenameElement<cr>
+nnoremap gr :action Refactorings.QuickListPopupAction<cr>
+vnoremap gr :action Refactorings.QuickListPopupAction<cr>
+
+nnoremap <leader>vb :action Vcs.ShowBranches<cr>
+nnoremap <leader>vv :action Vcs.QuickListPopupAction<cr>
+
+nnoremap <leader>c :action GotoClass<cr>
+nnoremap <leader>b :action GotoSymbol<cr>
+nnoremap gd :action GotoDeclaration<cr>
+nnoremap gi :action GotoImplementation<cr>
+
+"nnoremap ge :action Generate<cr>
+
+nnoremap gb :action GotoDatabaseObject<cr>
+nnoremap gf :action GotoFile<cr>
+nnoremap gp :action FindInPath<cr>
 vnoremap gp :action FindInPath<cr>
+nnoremap ge :action SearchEverywhere<cr>
+vnoremap ge :action SearchEverywhere<cr>
+
+nnoremap <C-o> :action Back<cr>
+vnoremap <C-o> :action Back<cr>
+nnoremap <C-i> :action Forward<cr>
+vnoremap <C-i> :action Forward<cr>
+
+nnoremap gm :action ManageRecentProjects<cr>

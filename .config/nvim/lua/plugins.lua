@@ -39,6 +39,7 @@ packer.startup(function(use)
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'Th3Whit3Wolf/one-nvim'
   use 'nvim-treesitter/nvim-treesitter-angular'
+  use 'chriskempson/base16-vim'
 
   use {
     'neoclide/coc.nvim',
@@ -84,9 +85,5 @@ packer.startup(function(use)
     opt = true
   }
 
-  use {
-    'puremourning/vimspector',
-    cmd = 'VimspectorContinue',
-    opt = true
-  }
+  use 'puremourning/vimspector'
 end)

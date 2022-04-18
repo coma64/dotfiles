@@ -50,7 +50,7 @@ vim.wo.conceallevel = 1
 
 -- Theme
 vim.g.Vsd = { contrast = 2 }
-vim.api.nvim_command('colorscheme one-nvim')
+vim.api.nvim_command('colorscheme base16-tomorrow-night')
 
 -- Airline
 vim.g.airline_powerline_fonts = 1

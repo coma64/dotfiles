@@ -29,11 +29,7 @@ map('-', ':pu _<cr>')
 map('Y', 'y$')
 map('_', ':pu! _<cr>')
 
--- Tabs
-map(L .. 't', ':tabn<cr>')
-map(L .. 'T', ':tabp<cr>')
-
--- Windows
+-- Windows and tabs
 map(L .. '*', ':resize +20<cr>')
 map(L .. '+', ':vertical resize +20<cr>')
 map(L .. '-', ':vertical resize -20<cr>')
@@ -41,9 +37,11 @@ map(L .. '_', ':resize -20<cr>')
 map(L .. 'H', ':wincmd H<cr>')
 map(L .. 'L', ':wincmd L<cr>')
 map('H', ':wincmd h<cr>')
+map(L .. 'l', ':tabnext<cr>')
 map(L .. 'j', ':wincmd j<cr>')
 map(L .. 'k', ':wincmd k<cr>')
 map('L', ':wincmd l<cr>')
+map(L .. 'h', ':tabprevious<cr>')
 map(L .. 's', ':wincmd s<cr>')
 map(L .. 'v', ':wincmd v<cr>')
 map(L .. 'x', ':wincmd q<cr>')
@@ -128,7 +126,6 @@ map(L .. 'CP', ':<C-u>CocListResume<cr>', N, { nowait = true })
 map(L .. 'CJ', ':<C-u>CocNext<cr>', N, { nowait = true })
 map(L .. 'CK', ':<C-u>CocPrev<cr>', N, { nowait = true })
 map(L .. 'CS', ':<C-u>CocList -I symbols<cr>', N, { nowait = true })
-
 
 map(L .. 'ca' , '<Plug>(coc-codeaction-selected)', N, { silent = false })
 map(L .. 'ca', '<Plug>(coc-codeaction-selected)', X)

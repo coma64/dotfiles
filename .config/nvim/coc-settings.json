@@ -2,6 +2,7 @@
     "clangd.arguments": ["--fallback-style=webkit"],
     "explorer.icon.enableNerdfont": true,
     "explorer.width": 30,
+    "eslint.autoFixOnSave": true,
     "languageserver": {
         "haskell": {
           "command": "haskell-language-server-wrapper",
