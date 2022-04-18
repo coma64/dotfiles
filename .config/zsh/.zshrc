@@ -164,15 +164,19 @@ zstyle ':completion:*' cache-path ~/.cache/zcache
 autoload -U +X bashcompinit && bashcompinit
 
 # broot
-source "${HOME}/.config/broot/launcher/bash/br"
-# thefuck (default alias: fuck)
-eval "$(thefuck --alias)"
-# fasd
-eval "$(fasd --init auto)"
+[ -f ${HOME}/.config/broot/launcher/bash/br ] && source "${HOME}/.config/broot/launcher/bash/br"
 # pyenv
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+if which pyenv &>/dev/null; then
+    eval "$(pyenv init --path)"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
+# nodenv
+which nodenv &>/dev/null && eval "$(nodenv init -)"
+# ghcup
+[ -f "/home/zaton/.ghcup/env" ] && source "/home/zaton/.ghcup/env"
+# cargo
+[ -f  "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 # fzf
 FZF_BASE="${HOME}/.fzf"
