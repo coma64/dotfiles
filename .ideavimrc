@@ -1,3 +1,19 @@
+" ********
+" nnoremap gb :action GotoDatabaseObject<cr>
+" nnoremap gp :action FindInPath<cr>
+" nnoremap gk :action MethodUp<cr>
+" nnoremap <leader>r[cvm] :action IntroduceConstant<cr>
+" nnoremap <leader>u :action FindUsages<cr>
+" nnoremap <leader>d :action Debug<cr>
+" nnoremap g, :action JumpToLastChange<cr>
+" nnoremap <leader>p :action PasteMultiple<cr>
+" nnoremap <leader>vb :action Vcs.ShowBranches<cr>
+" nnoremap <leader>vv :action Vcs.QuickListPopupAction<cr>
+" nnoremap ge :action SearchEverywhere<cr>
+" nnoremap <C-s> :w<cr>
+
+" ctrl shift e - recent locations
+
 set NERDTree
 set clipboard=unnamedplus
 set history=200
@@ -11,23 +27,19 @@ set scrolloff=1
 set showcmd
 set showmode
 set smartcase
-" set surround
 
 let mapleader = " "
 
-" ********
-" nnoremap gn :action SelectInProjectView<cr>
-" nnoremap gs :action FileStructurePopup<cr>
-" nnoremap gp :action FindInPath<cr>
-" nnoremap gk :action MethodUp<cr>
-" nnoremap gh :action Back<cr>
-" nnoremap <leader>e :action ShowErrorDescription<cr>
-" nnoremap <leader>w :action HideAllWindows<cr>
-" nnoremap <leader>z :action ToggleZenMode<cr>
-" nnoremap <leader>r[cvm] :action IntroduceConstant<cr>
-" nnoremap gr :action Refactorings.QuickListPopupAction<cr>
+nnoremap <C-s> :w<cr>
+vnoremap <C-s> :w<cr>
+inoremap <C-s> :w<cr>
+nnoremap Y y$
+nnoremap <leader>r :source ~/.ideavimrc<cr>
+ <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-k> <C-w>k
+nnoremap <C-j> <C-w>j
 
-" nnoremap <leader>u :action HighlightUsagesInFile<cr>
 nnoremap / :action Find<cr>
 vnoremap / :action Find<cr>
 nnoremap <leader>u :action FindUsages<cr>
@@ -39,12 +51,8 @@ nnoremap <leader>d :action Debug<cr>
 nnoremap <leader>e :action ShowErrorDescription<cr>
 nnoremap gn :action SelectInProjectView<cr>
 nnoremap gs :action FileStructurePopup<cr>
-" nnoremap <leader>f gq
 
-nnoremap <leader>h :action PreviousTab<cr>
-nnoremap <leader>l :action NextTab<cr>
-nnoremap <leader>sn :action NextSplitter<cr>
-nnoremap <leader>sv :action SplitVertically<cr>
+nnoremap <leader>s :action SplitVertically<cr>
 nnoremap <leader>w :action HideAllWindows<cr>
 nnoremap <leader>z :action ToggleZenMode<cr>
 nnoremap g, :action JumpToLastChange<cr>
@@ -53,8 +61,6 @@ nnoremap gj :action MethodDown<cr>
 nnoremap gk :action MethodUp<cr>
 vnoremap gj :action MethodDown<cr>
 vnoremap gk :action MethodUp<cr>
-nnoremap gh :action Back<cr>
-nnoremap gl :action Forward<cr>
 
 nnoremap <leader>i :action QuickImplementations<cr>
 nnoremap <leader>p :action PasteMultiple<cr>
@@ -80,6 +86,7 @@ nnoremap gd :action GotoDeclaration<cr>
 nnoremap gi :action GotoImplementation<cr>
 
 "nnoremap ge :action Generate<cr>
+nnoremap <leader>n :action NewFile<cr>
 
 nnoremap gb :action GotoDatabaseObject<cr>
 nnoremap gf :action GotoFile<cr>
@@ -88,9 +95,10 @@ vnoremap gp :action FindInPath<cr>
 nnoremap ge :action SearchEverywhere<cr>
 vnoremap ge :action SearchEverywhere<cr>
 
-nnoremap <C-o> :action Back<cr>
-vnoremap <C-o> :action Back<cr>
-nnoremap <C-i> :action Forward<cr>
-vnoremap <C-i> :action Forward<cr>
-
 nnoremap gm :action ManageRecentProjects<cr>
+
+" Mapped inside pycharm
+" nnoremap <C-o> :action Back<cr>
+" vnoremap <C-o> :action Back<cr>
+" nnoremap <C-i> :action Forward<cr>
+" vnoremap <C-i> :action Forward<cr>
