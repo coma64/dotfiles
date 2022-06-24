@@ -119,3 +119,15 @@ function fzf-git-branch() {
             --preview 'git log -n 50 --color=always --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed "s/.* //" <<< {})' |
         sed "s/.* //"
 }
+
+function gh-repo {
+    git init
+    git config user.name coma64
+    git config user.email 'zaton.tristan@gmail.com'
+    gh repo create --private --source .
+
+    [ $1 = "-n" ] && exit
+    git add .
+    git commit -m Init
+    git push -u origin $(git rev-parse --abbrev-ref HEAD)
+}

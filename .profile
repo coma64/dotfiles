@@ -10,3 +10,19 @@ export PATH="${HOME}/.ghcup/bin:${HOME}/.nodenv/bin:${HOME}/.poetry/bin:${PYENV_
 export DEVELOPMENT_FOLDER="${HOME}/dev"
 export AUTOENV_ENV_FILENAME='.envrc'
 export MAKEFLAGS='-j16'
+
+# asdf
+[ -f "/opt/asdf-vm/asdf.sh" ] && source "/opt/asdf-vm/asdf.sh"
+# pyenv
+if which pyenv &>/dev/null; then
+    eval "$(pyenv init --path)"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
+# nodenv
+which nodenv &>/dev/null && eval "$(nodenv init -)"
+# ghcup
+[ -f "/home/zaton/.ghcup/env" ] && source "/home/zaton/.ghcup/env"
+# cargo
+[ -f  "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+

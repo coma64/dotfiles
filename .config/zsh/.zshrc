@@ -20,11 +20,10 @@ autoload -Uz _zinit
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
-zinit light-mode for \
-    z-shell/z-a-rust \
-    z-shell/z-a-as-monitor \
-    z-shell/z-a-patch-dl \
-    z-shell/z-a-bin-gem-node
+# zinit light-mode for \
+#     z-shell/z-a-rust \
+#     z-shell/z-a-patch-dl \
+#     z-shell/z-a-bin-gem-node
 
 ### End of Zinit's installer chunk
 ### End of Zinit's installer chunk
@@ -138,18 +137,6 @@ autoload -U +X bashcompinit && bashcompinit
 
 # broot
 [ -f ${HOME}/.config/broot/launcher/bash/br ] && source "${HOME}/.config/broot/launcher/bash/br"
-# pyenv
-if which pyenv &>/dev/null; then
-    eval "$(pyenv init --path)"
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi
-# nodenv
-which nodenv &>/dev/null && eval "$(nodenv init -)"
-# ghcup
-[ -f "/home/zaton/.ghcup/env" ] && source "/home/zaton/.ghcup/env"
-# cargo
-[ -f  "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 # fzf
 FZF_BASE="${HOME}/.fzf"
@@ -163,10 +150,6 @@ fi
 if [ -f "${ZDOTDIR}/lib.zsh" ]; then
     source "${ZDOTDIR}/lib.zsh"
 fi
-
-[ -f "/opt/asdf-vm/asdf.sh" ] && source "/opt/asdf-vm/asdf.sh"
-
-# neofetch
 
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.dotfiles/.config/zsh/.p10k.zsh ]] || source ~/.dotfiles/.config/zsh/.p10k.zsh

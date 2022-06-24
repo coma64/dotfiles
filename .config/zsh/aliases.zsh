@@ -15,7 +15,7 @@ alias pacman='paru'
 
 alias b='br'
 alias bm='batman'
-alias n='nvim'
+alias vi='nvim'
 alias c="br -h ${HOME}/.config"
 alias d="br -g ${DEVELOPMENT_FOLDER}"
 
