@@ -69,8 +69,8 @@ which_key.register({
 
   ["<ESC>"] = { "<cmd> noh <CR>", "  no highlight" },
   ['<C-n>'] = { '<cmd> NvimTreeToggle <cr>', 'Open file browser' },
-  ['<Tab>'] = { '<cmd> tabnext <cr>', 'Tab next' },
-  ['<S-Tab>'] = { '<cmd> tabprevious <cr>', 'Tab previous' },
+  ['^'] = { '<cmd> tabnext <cr>', 'Tab next' },
+  ['°'] = { '<cmd> tabprevious <cr>', 'Tab previous' },
 
   g = {
     name = 'Goto',

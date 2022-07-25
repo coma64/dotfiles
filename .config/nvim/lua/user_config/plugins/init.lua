@@ -61,8 +61,33 @@ return require('packer').startup(function(use)
   }
 
   use {
+  'L3MON4D3/LuaSnip',
+  config = function ()
+    require("luasnip.loaders.from_vscode").lazy_load()
+    require('luasnip').filetype_extend('python', {'django'})
+    print 'loaded luasnip'
+  end
+  }
+
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'rafamadriz/friendly-snippets',
+      { 'saadparwaiz1/cmp_luasnip', after = 'LuaSnip' },
+    },
+    config = function ()
+      require 'user_config.plugins.configs.nvim_cmp'
+    end,
+  }
+
+  use {
     'williamboman/nvim-lsp-installer',
     requires = { 'neovim/nvim-lspconfig' },
+    after = 'nvim-cmp',
     config = function ()
       require("nvim-lsp-installer").setup {
         'pyright',

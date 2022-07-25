@@ -38,6 +38,7 @@ opt.splitbelow = true
 opt.splitright = true
 
 opt.termguicolors = true
+opt.completeopt = 'menu,menuone,noselect'
 
 -- persistenly store info like the command history
 vim.schedule(function()
