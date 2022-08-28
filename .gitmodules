@@ -1,0 +1,3 @@
+[submodule ".config/leftwm/themes/Soothe"]
+	path = .config/leftwm/themes/Soothe
+	url = git@github.com:coma64/leftwm-soothe.git

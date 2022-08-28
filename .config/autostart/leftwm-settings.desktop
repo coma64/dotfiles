@@ -1,0 +1,6 @@
+[Desktop Entry]
+Comment=Load leftwm settings
+Exec=leftwm-settings
+Name=leftwm-settings
+Terminal=true
+Type=Application

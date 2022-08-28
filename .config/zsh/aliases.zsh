@@ -29,6 +29,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias cap="bat /sys/class/power_supply/BAT0/capacity"
 alias color-test="msgcat --color=test"
 alias cg="git --git-dir=${HOME}/.local/share/dotfiles --work-tree=${HOME}/"
+alias clg="lazygit --git-dir=${HOME}/.local/share/dotfiles --work-tree=${HOME}/"
 alias elev-priv="$(type 'sudo' &> /dev/null && echo 'sudo ' || echo 'doas ')"
 alias gitpkg='pacman -Q | grep -i "\-git" | wc -l'
 alias gpg-check='gpg2 --keyserver-options auto-key-retrieve --verify'
