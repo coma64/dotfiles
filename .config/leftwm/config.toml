@@ -44,7 +44,7 @@ key = "x"
 
 [[keybind]]
 command = "Execute"
-value = "slock"
+value = "i3lock-fancy"
 modifier = ["modkey", "Control"]
 key = "l"
 
