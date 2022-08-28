@@ -1,5 +1,6 @@
 local telescope = require 'telescope.builtin'
 local which_key = require 'which-key'
+local lazygit = require 'lazygit'
 local utils = require 'user_config.utils'
 local lsp = vim.lsp
 
@@ -64,20 +65,20 @@ which_key.register({
   ['<C-l>'] = { '<C-w>l', ' Window right' },
 
   -- location list - used by lsp diagnostics
-  ['<C-s>'] = { '<cmd> :lnext <cr>', 'Diagnostic next' },
-  ['<C-a>'] = { '<cmd> :lprevious <cr>', 'Diagnostic previous' },
+  ['<F12>'] = { '<cmd> :lnext <cr>', 'Diagnostic next' },
+  ['<F11>'] = { '<cmd> :lprevious <cr>', 'Diagnostic previous' },
 
   ["<ESC>"] = { "<cmd> noh <CR>", "  no highlight" },
-  ['<C-n>'] = { '<cmd> NvimTreeToggle <cr>', 'Open file browser' },
-  ['^'] = { '<cmd> tabnext <cr>', 'Tab next' },
-  ['°'] = { '<cmd> tabprevious <cr>', 'Tab previous' },
+  ['<C-b>'] = { '<cmd> NvimTreeToggle <cr>', 'Open file browser' },
+  ['<C-n>'] = { '<cmd> tabnext <cr>', 'Tab next' },
+  ['<C-p>'] = { '<cmd> tabprevious <cr>', 'Tab previous' },
 
   g = {
     name = 'Goto',
     d = { lsp.buf.definition, "  LSP definition" },
     D = { lsp.buf.declaration, "  LSP declaration" },
     i = { lsp.buf.implementation, "  LSP implementation" },
-    u = { lsp.buf.references(), "  LSP usages" },
+    u = { lsp.buf.references, "  LSP usages" },
     r = {
       lua_operator({
         utils.search_dotted_path,
@@ -90,6 +91,9 @@ which_key.register({
   R = { utils.rename, "  LSP rename" },
 
   ['<leader>'] = {
+    g = {
+      g = { lazygit.lazygit, 'Lazygit' },
+    },
     f = {
       name = 'Find',
       f = { telescope.find_files, 'Files' },
@@ -100,7 +104,7 @@ which_key.register({
     },
     r = { utils.reload_config, 'Reload config' },
     x = { '<cmd> :q <cr>', 'Close current buffer' },
-    o = { '<cmd> :windcmd o <cr>', 'Close other windows' },
+    o = { '<cmd> :only <cr>', 'Close other windows' },
 
     -- lsp
     l = {
@@ -123,8 +127,6 @@ which_key.register({
       r = { lsp.buf.remove_workspace_folder, "Remove folder" },
       l = {
         function()
-          local x = 5
-          print(x)
           print(vim.inspect(lsp.buf.list_workspace_folders()))
         end,
         "List folders"
@@ -135,14 +137,17 @@ which_key.register({
 
 which_key.register({
   -- go to  beginning and end
-  ["<C-a>"] = { "<ESC>^i", "論 beginning of line" },
-  ["<C-e>"] = { "<End>", "壟 end of line" },
+  ["<C-a>"] = { "<esc>^i", "論 beginning of line" },
+  ["<C-e>"] = { "<end>", "壟 end of line" },
 
   -- navigate within insert mode
   ["<C-h>"] = { "<Left>", "  move left" },
   ["<C-l>"] = { "<Right>", " move right" },
   ["<C-j>"] = { "<Down>", " move down" },
   ["<C-k>"] = { "<Up>", " move up" },
+
+  ['<C-n>'] = { '<esc><cmd> tabnext <cr>', 'Tab next' },
+  ['<C-p>'] = { '<esc><cmd> tabprevious <cr>', 'Tab previous' },
 }, { mode = 'i' })
 
 which_key.register({

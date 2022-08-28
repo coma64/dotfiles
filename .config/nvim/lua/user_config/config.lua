@@ -1,7 +1,7 @@
 local opt = vim.opt
 local g = vim.g
 
-vim.lsp.set_log_level(0)
+vim.lsp.set_log_level(vim.log.levels.WARN)
 
 g.mapleader = ' '
 -- opt.timeoutlen = 400
@@ -19,6 +19,7 @@ opt.tabstop = 8
 -- auto indent on new lines
 opt.smartindent = true
 opt.smarttab = true
+opt.ignorecase = true
 opt.smartcase = true
 
 -- disable nvim intro
@@ -45,6 +46,10 @@ vim.schedule(function()
    vim.opt.shadafile = vim.fn.expand "$HOME" .. "/.local/share/nvim/shada/main.shada"
    vim.cmd [[ silent! rsh ]]
 end)
+
+-- Plugins
+g.vimspector_install_gadgets = {'debugpy'}
+g.vimspector_enable_mappings = 'HUMAN'
 
 -- having a signle venv is kinda hard to maintain with all the different tools
 -- g.python3_host_prog = vim.fn.expand '$HOME' .. '/.local/share/nvim-venv/bin/python'

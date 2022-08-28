@@ -1,4 +1,7 @@
-local cmp = require'cmp'
+local success, cmp = pcall(require, 'cmp')
+if not success then return end
+local success, lspkind = pcall(require, 'lspkind')
+if not success then return end
 
 -- straight up copied from nvchad :D
 
@@ -109,5 +112,11 @@ cmp.setup({
     { name = "buffer" },
     { name = "nvim_lua" },
     { name = "path" },
+  },
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol', -- show only symbol annotations
+      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+    })
   },
 })

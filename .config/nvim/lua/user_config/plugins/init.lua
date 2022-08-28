@@ -15,6 +15,13 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
+    'VonHeikemen/project-settings.nvim',
+    config = function()
+      require 'user_config.plugins.configs.project_settings'
+    end,
+  }
+
+  use {
     'chriskempson/base16-vim',
     config = function()
       vim.g.base16colorspace = 256
@@ -25,8 +32,12 @@ return require('packer').startup(function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ":TSUpdate",
+    branch = '347aaa95',
     config = function()
-      require 'nvim-treesitter.configs'.setup {
+      local success, treesitter_configs = pcall(require, 'nvim-treesitter.configs')
+      if not success then return end
+
+      treesitter_configs.setup {
         ensure_installed = { 'vim', 'lua', 'python', 'css', 'html', 'javascript', 'typescript', 'regex', 'bash' },
         sync_install = false,
         highlight = {
@@ -48,7 +59,8 @@ return require('packer').startup(function(use)
       },
     },
     config = function()
-      local telescope = require 'telescope'
+      local success, telescope = pcall(require, 'telescope')
+      if not success then return end
       telescope.load_extension 'fzf'
     end,
   }
@@ -56,16 +68,23 @@ return require('packer').startup(function(use)
   use {
     'lewis6991/gitsigns.nvim',
     config = function()
-      require('gitsigns').setup()
+      local success, gitsigns = pcall(require, 'gitsigns')
+      if not success then return end
+      gitsigns.setup()
     end,
   }
+
+  use 'kdheepak/lazygit.nvim'
 
   use {
   'L3MON4D3/LuaSnip',
   config = function ()
-    require("luasnip.loaders.from_vscode").lazy_load()
-    require('luasnip').filetype_extend('python', {'django'})
-    print 'loaded luasnip'
+    local success, luasnip = pcall(require, 'luasnip')
+    if not success then return end
+    local success2, from_vscode = pcall(require, 'luasnip.loaders.from_vscode')
+    if not success2 then return end
+    from_vscode.lazy_load()
+    luasnip.filetype_extend('python', {'django'})
   end
   }
 
@@ -77,6 +96,7 @@ return require('packer').startup(function(use)
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
       'rafamadriz/friendly-snippets',
+      'onsails/lspkind.nvim',
       { 'saadparwaiz1/cmp_luasnip', after = 'LuaSnip' },
     },
     config = function ()
@@ -89,9 +109,16 @@ return require('packer').startup(function(use)
     requires = { 'neovim/nvim-lspconfig' },
     after = 'nvim-cmp',
     config = function ()
-      require("nvim-lsp-installer").setup {
+      local success, lsp_installer = pcall(require, "nvim-lsp-installer")
+
+      if not success then return end
+      lsp_installer.setup {
         'pyright',
         'sumneko_lua',
+        'tsserver',
+        'angularls',
+        'svelte',
+        'gopls',
       }
 
       require 'user_config.plugins.configs.lspconfig'
@@ -100,7 +127,11 @@ return require('packer').startup(function(use)
 
   use {
     "windwp/nvim-autopairs",
-    config = function() require("nvim-autopairs").setup {} end
+    config = function()
+      local success, autopairs = pcall(require, "nvim-autopairs")
+      if not success then return end
+      autopairs.setup({})
+    end
   }
 
   use {
@@ -108,7 +139,9 @@ return require('packer').startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons' },
     tag = 'nightly',
     config = function()
-      require('nvim-tree').setup {}
+      local success, nvim_tree = pcall(require, "nvim-tree")
+      if not success then return end
+      nvim_tree.setup({})
     end,
   }
 
@@ -116,20 +149,46 @@ return require('packer').startup(function(use)
     'numToStr/Comment.nvim',
     keys = { "gc", "gb" },
     config = function()
-      require('Comment').setup()
+      local success, comment = pcall(require, "Comment")
+      if not success then return end
+      comment.setup()
     end
   }
+
+  use {
+    "akinsho/toggleterm.nvim",
+    tag = 'v2.*',
+    config = function()
+      local success, toggleterm = pcall(require, "toggleterm")
+      if not success then return end
+      toggleterm.setup({
+        open_mapping = "<C-t>",
+        insert_mappings = true,
+        terminal_mappings = true,
+        start_in_insert = false,
+        winbar = {
+          enabled = false,
+        },
+      })
+    end
+  }
+
+  use 'puremourning/vimspector'
 
   use {
     'folke/which-key.nvim',
     after = 'telescope.nvim',
     config = function()
-      require('which-key').setup {}
+      local success, which_key = pcall(require, "which-key")
+      if not success then return end
+      which_key.setup({})
       require 'user_config.plugins.configs.which_key'
     end,
   }
 
   if packer_bootstrap then
-    require('packer').sync()
+    local success, packer = pcall(require, "packer")
+    if not success then return end
+    packer.sync()
   end
 end)

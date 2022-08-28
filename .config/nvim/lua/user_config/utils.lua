@@ -13,7 +13,7 @@ function M.reload_config()
   require('packer').compile()
   -- Reload mappings
   require('which-key').reset()
-  require 'user_config.plugin_configs.which_key'
+  require 'user_config.plugins.configs.which_key'
 end
 
 function M.rename()
@@ -73,7 +73,7 @@ function M.rename_apply(curr, win)
 end
 
 function M.search_dotted_path(path)
-  require('telescope.builtin').find_files({ default_text=path[1]:gsub('%.', '/') })
+  require('telescope.builtin').find_files({ default_text="'" .. path[1]:gsub('%.', '/') })
 end
 
 for name, fn in pairs(M) do
