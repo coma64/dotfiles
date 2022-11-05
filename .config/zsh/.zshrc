@@ -33,7 +33,7 @@ autoload -Uz _zinit
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
 # Options - stolen from garuda :D
-setopt correct                                                  # Auto correct mistakes
+# setopt correct                                                  # Auto correct mistakes
 setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
 setopt nocaseglob                                               # Case insensitive globbing
 setopt rcexpandparam                                            # Array expension with parameters
@@ -63,18 +63,10 @@ zinit ice depth=1
 zinit light romkatv/powerlevel10k
 
 zinit ice as"completion" wait lucid blockf
-zinit snippet OMZ::plugins/github/_hub
-zinit ice as"completion" wait lucid blockf
-zinit snippet OMZ::plugins/rust/_rustc
-zinit ice as"completion" wait lucid blockf
-zinit snippet OMZ::plugins/fd/_fd
-zinit ice as"completion" wait lucid blockf
 zinit snippet OMZ::plugins/docker/_docker
 zinit ice as"completion" wait lucid blockf
 zinit snippet OMZ::plugins/ng/_ng
 
-zinit ice wait lucid
-zinit snippet OMZ::plugins/rust/rust.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/fancy-ctrl-z/fancy-ctrl-z.plugin.zsh
 zinit ice wait lucid
@@ -85,8 +77,6 @@ ZSH_AUTOSUGGEST_USE_ASYNC=true
 ZSH_AUTOSUGGEST_MANUAL_REBIND=true
 zinit ice wait lucid atload'_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
-zinit ice lucid wait
-zinit snippet OMZ::plugins/rsync/rsync.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/alias-finder/alias-finder.plugin.zsh
 zinit ice wait lucid
@@ -99,11 +89,7 @@ bgnotify_threshold=30
 zinit ice wait lucid
 zinit snippet OMZ::plugins/bgnotify/bgnotify.plugin.zsh
 zinit ice wait lucid
-zinit snippet OMZ::plugins/nmap/nmap.plugin.zsh
-zinit ice wait lucid
 zinit snippet OMZ::plugins/autoenv/autoenv.plugin.zsh
-zinit ice wait lucid
-zinit snippet OMZ::plugins/asdf/asdf.plugin.zsh
 
 zinit ice lucid wait
 zinit light willghatch/zsh-saneopt
@@ -139,7 +125,8 @@ autoload -U +X bashcompinit && bashcompinit
 [ -f ${HOME}/.config/broot/launcher/bash/br ] && source "${HOME}/.config/broot/launcher/bash/br"
 
 # fzf
-FZF_BASE="${HOME}/.fzf"
+# FZF_BASE="${HOME}/.fzf"
+FZF_BASE="/usr/share/fzf"
 zinit ice wait lucid
 zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh
 
@@ -150,6 +137,13 @@ fi
 if [ -f "${ZDOTDIR}/lib.zsh" ]; then
     source "${ZDOTDIR}/lib.zsh"
 fi
+
+[ -f "${ZDOTDIR}/nnn-quitcd.zsh" ] && source "${ZDOTDIR}/nnn-quitcd.zsh"
+
+# nnn
+export NNN_BMS='d:~/dev/;D:~/Downloads/;c:~/.config/;b:~/.local/bin;l:~/.local/;s:~/.local/share/;e:/etc/;t:/tmp/'
+export NNN_FIFO='/tmp/nnn.fifo'
+export NNN_PLUG='f:fzcd;v:imgview;p:preview-tui;o:fzopen;g:gitroot;s:suedit;x:togglex;u:upload;d:dev-folders-fzf'
 
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.dotfiles/.config/zsh/.p10k.zsh ]] || source ~/.dotfiles/.config/zsh/.p10k.zsh

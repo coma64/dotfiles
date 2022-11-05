@@ -1,6 +1,6 @@
 [user]
-	email = zaton.tristan@gmail.com
-	name = coma64
+        email = zaton@hornetsecurity.com
+        name = Tristan Zaton
 [interactive]
 	diffFilter = diff-so-fancy --patch
 [core]
@@ -22,3 +22,5 @@
 	ui = true
 [pull]
 	rebase = true
+[init]
+	defaultBranch = main

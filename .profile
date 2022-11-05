@@ -6,7 +6,7 @@ export TERM=xterm-256color
 export EDITOR=nvim
 export VISUAL=nvim
 export PYENV_ROOT="${HOME}/.pyenv"
-export PATH="${HOME}/.ghcup/bin:${HOME}/.nodenv/bin:${HOME}/.poetry/bin:${PYENV_ROOT}/bin:${HOME}/.local/bin:${PATH}"
+export PATH="${HOME}/go/bin:${HOME}/.ghcup/bin:${HOME}/.nodenv/bin:${HOME}/.poetry/bin:${PYENV_ROOT}/bin:${HOME}/.local/bin:${PATH}"
 export DEVELOPMENT_FOLDER="${HOME}/dev"
 export AUTOENV_ENV_FILENAME='.envrc'
 export MAKEFLAGS='-j16'
@@ -26,3 +26,7 @@ which nodenv &>/dev/null && eval "$(nodenv init -)"
 # cargo
 [ -f  "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
+
+
+# Added by Toolbox App
+export PATH="$PATH:/home/zaton/.local/share/JetBrains/Toolbox/scripts"

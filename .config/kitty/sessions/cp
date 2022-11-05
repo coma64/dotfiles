@@ -1,0 +1,10 @@
+layout splits
+
+title cp-backend
+cd ~/dev/py/cp-backend/
+launch zsh
+launch docker compose up -d
+
+new_tab ngCp
+cd ~/dev/js/ngCp/ngcp-master/
+launch npm start

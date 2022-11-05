@@ -1,3 +1,29 @@
+WORKTREES=("${HOME}/dev/js/ngCp")
+
+# function c() {
+#     local preview_cmd='lsd -lh --color always --config-file "${HOME}/.config/lsd/simple-lsd.yml" --group-directories-first ${HOME}/.config/{}'
+#     dir=$(find "${HOME}/.config" -mindepth 1 -maxdepth 1 -type d -printf '%P\n' | fzf --preview $preview_cmd --preview-window right:60% --keep-right --scroll-off 3 --height 40%)
+#     cd "${HOME}/.config/${dir}"
+# }
+
+function get-dev-folders() {
+    find "${HOME}/dev" -mindepth 2 -maxdepth 2 -type d | (IFS='|'; sed -E "\:(${WORKTREES[*]}):d")
+
+    for wt in $WORKTREES; do
+        find $wt -mindepth 1 -maxdepth 1 -type d -not -name '.*'
+    done
+}
+
+function fzf-dev-folders() {
+    local preview_cmd='lsd -lh --color always --config-file "${HOME}/.config/lsd/simple-lsd.yml" --group-directories-first ${HOME}/dev/{}'
+    get-dev-folders | sed "s#${HOME}/dev/##" | fzf --preview $preview_cmd --preview-window right:60% --keep-right --scroll-off 3 --height 40%
+}
+
+function d() {
+    local dir=$(fzf-dev-folders)
+    cd "${HOME}/dev/${dir}"
+}
+
 function git_current_branch() {
     git branch --show-current
 }

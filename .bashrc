@@ -1,76 +1,56 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+[[ $- != *i* ]] && return
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
+# Load starship prompt if starship is installed
+if  [ -x /usr/bin/starship ]; then
+    __main() {
+        local major="${BASH_VERSINFO[0]}"
+        local minor="${BASH_VERSINFO[1]}"
 
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=2000
-HISTFILESIZE=10000
-
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-shopt -s globstar
-
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
+        if ((major > 4)) || { ((major == 4)) && ((minor >= 1)); }; then
+            source <("/usr/bin/starship" init bash --print-full-init)
+        else
+            source /dev/stdin <<<"$("/usr/bin/starship" init bash --print-full-init)"
+        fi
+    }
+    __main
+    unset -f __main
 fi
 
-# Load aliases
-if [ -f $HOME/.config/aliases.sh ]; then
-    . $HOME/.config/aliases.sh
-fi
+# Advanced command-not-found hook
+source /usr/share/doc/find-the-command/ftc.bash
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
+# Aliases
+alias dir='dir --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias fixpacman="sudo rm /var/lib/pacman/db.lck"
+alias grep='grep --color=auto'
+alias grubup="sudo update-grub"
+alias hw='hwinfo --short'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+alias psmem='ps auxf | sort -nr -k 4'
+alias rmpkg="sudo pacman -Rdd"
+alias tarnow='tar -acf '
+alias untar='tar -zxvf '
+alias upd='/usr/bin/update'
+alias vdir='vdir --color=auto'
+alias wget='wget -c '
 
-# Custom prompt
-PS1="\[\e[33m\][\A] \[\e[34m\]\u\[\e[39m\] \[\e[31m\]:: \[\e[35m\]\W\[\e[39m\] $ "
+# Help people new to Arch
+alias apt-get='man pacman'
+alias apt='man pacman'
+alias helpme='cht.sh --shell'
+alias please='sudo'
+alias tb='nc termbin.com 9999'
 
-# From distrotubes dotfiles
-shopt -s autocd # change to named directory
-shopt -s cdspell # autocorrects cd misspellings
-shopt -s cmdhist # save multi-line commands in history as single line
-shopt -s dotglob
-shopt -s histappend # do not overwrite history
-shopt -s expand_aliases # expand aliases
-shopt -s checkwinsize # checks term size when bash regains control
+# Cleanup orphaned packages
+alias cleanup='sudo pacman -Rns `pacman -Qtdq`'
 
-#ignore upper and lowercase when TAB completion
-bind "set completion-ignore-case on"
+# Get the error messages from journalctl
+alias jctl="journalctl -p 3 -xb"
 
-# Autostart tmux
-#[ -z "$TMUX"  ] && { tmux attach || exec tmux new-session -s main -c $HOME && exit;}
+# Recent installed packages
+alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 
-source /home/coma/.config/broot/launcher/bash/br
-
-source "$HOME/.cargo/env"
-
-source /home/zaton/.config/broot/launcher/bash/br
+[ -f "/usr/share/nnn/quitcd/quitcd.bash_zsh" ] && source /usr/share/nnn/quitcd/quitcd.bash_zsh

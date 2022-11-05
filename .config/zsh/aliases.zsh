@@ -12,13 +12,18 @@ alias mv='mv -i'
 alias grep='grep --color=auto'
 alias free='free -h'
 alias pacman='paru'
-alias bat='batcat'
+alias rg='kitty +kitten hyperlinked_grep'
 
 alias b='br'
 alias bm='batman'
 alias vi='nvim'
-alias c="br -h ${HOME}/.config"
-alias d="br -g ${DEVELOPMENT_FOLDER}"
+alias p='paru'
+alias n='nnn-quit-cd -RAex'
+alias l='n -d'
+alias c='n -Hnb c'
+alias zz='exec zsh'
+alias t='tmux'
+alias tp='tmuxp load'
 
 alias af='alias-finder -l'
 alias ..='cd ..'
@@ -46,16 +51,18 @@ alias rm='rm -I'
 alias sudo='sudo '
 alias tiny='tiny_url'
 alias gcff='fzf-git-checkout'
+alias lg='lazygit'
 
 # Replace yay with paru if installed
 [ ! -x /usr/bin/yay ] && [ -x /usr/bin/paru ] && alias yay='paru'
 
 if command -v 'lsd' &> /dev/null; then
-    alias ls='lsd'
-    alias ll='lsd -lA'
-    alias lld='lsd -ld'
+    alias ls='lsd --hyperlink=auto'
+    alias ll='ls -lA'
+    alias lld='ls -ld'
 else
-    alias ls='ls --color=auto'
+    alias ls='ls --hyperlink=auto --color=auto'
     alias ll='ls -lah'
     alias lld='ls -ld'
 fi
+

@@ -1,3 +1,9 @@
 [submodule ".config/leftwm/themes/Soothe"]
 	path = .config/leftwm/themes/Soothe
 	url = git@github.com:coma64/leftwm-soothe.git
+[submodule ".config/kitty/kitty_grab"]
+	path = .config/kitty/kitty_grab
+	url = https://github.com/yurikhan/kitty_grab.git
+[submodule ".config/kitty/kitty_search"]
+	path = .config/kitty/kitty_search
+	url = https://github.com/trygveaa/kitty-kitten-search

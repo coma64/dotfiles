@@ -1,0 +1,14 @@
+layout splits
+
+title cp-backend
+cd ~/dev/py/cp-backend/
+launch zsh
+launch docker compose up -d
+
+new_tab ngCp
+cd ~/dev/js/ngCp/ngcp-tebil/
+launch npm start
+
+new_tab tebils
+cd ~/dev/js/tebils/
+launch npm run build:watch

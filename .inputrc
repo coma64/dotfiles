@@ -1,9 +1,9 @@
 $include /etc/inputrc
 
-# Enable vi mode
-set editing-mode vi
-set show-mode-in-prompt on
-
-set keymap vi-command
-"k": history-search-backward
-"j": history-search-forward
+# # Enable vi mode
+# set editing-mode vi
+# set show-mode-in-prompt on
+#
+# set keymap vi-command
+# "k": history-search-backward
+# "j": history-search-forward
