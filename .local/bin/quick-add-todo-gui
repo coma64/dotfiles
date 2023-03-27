@@ -1,0 +1,9 @@
+#!/bin/bash
+
+content=$(zenity --entry --text='Enter todo:')
+
+if [[ -n $content ]]; then
+    if ! todoist-cli quick "$content"; then
+        zenity --error --text='Adding todo failed'
+    fi
+fi
