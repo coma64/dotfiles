@@ -1,0 +1,11 @@
+layout splits
+
+title backend
+cd ~/dev/py/bahn-alarm/
+launch docker compose up -d
+launch poetry run uvicorn app.main:app --reload --host localhost --port 8000
+launch poetry run dramatiq app.tasks.tasks --watch . --processes 2 --threads 2
+
+new_tab frontend
+cd ~/dev/js/bahn-alarm-spa/
+launch pnpm run dev

@@ -146,6 +146,8 @@ which_key.register({
   ["<C-j>"] = { "<Down>", " move down" },
   ["<C-k>"] = { "<Up>", " move up" },
 
+  ["<C-d>"] = { "<Del>", "Delete a character" },
+
   ['<C-n>'] = { '<esc><cmd> tabnext <cr>', 'Tab next' },
   ['<C-p>'] = { '<esc><cmd> tabprevious <cr>', 'Tab previous' },
 }, { mode = 'i' })

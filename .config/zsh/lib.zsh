@@ -1,10 +1,41 @@
-WORKTREES=("${HOME}/dev/js/ngCp")
+WORKTREES=("${HOME}/dev/js/ngCp" "${HOME}/dev/js/hse-components")
 
 # function c() {
 #     local preview_cmd='lsd -lh --color always --config-file "${HOME}/.config/lsd/simple-lsd.yml" --group-directories-first ${HOME}/.config/{}'
 #     dir=$(find "${HOME}/.config" -mindepth 1 -maxdepth 1 -type d -printf '%P\n' | fzf --preview $preview_cmd --preview-window right:60% --keep-right --scroll-off 3 --height 40%)
 #     cd "${HOME}/.config/${dir}"
 # }
+
+function s() {
+    ssh $(rg -e '^Host' ${HOME}/.ssh/config* | awk '{ print $2 }' | fzf --height 40%) "$@"
+}
+
+function fzf-config() {
+    local base_path=${HOME}/.config
+    echo $base_path/$(
+        find $base_path -maxdepth 3 |\
+            sed "s#$base_path/##" |\
+            sed "\#$base_path#d" |\
+            fzf --height 40% --scroll-off 3
+    )
+}
+
+function c() {
+    local target=$(fzf-config)
+
+    if [ -z $target ]; then return; fi
+
+    if [[ -f $target ]]; then
+        cd $(dirname $target)
+        $EDITOR $target
+    else
+        cd $target
+    fi
+}
+
+function jb() {
+    "$@" &>/dev/null &!
+}
 
 function get-dev-folders() {
     find "${HOME}/dev" -mindepth 2 -maxdepth 2 -type d | (IFS='|'; sed -E "\:(${WORKTREES[*]}):d")
@@ -152,8 +183,14 @@ function gh-repo {
     git config user.email 'zaton.tristan@gmail.com'
     gh repo create --private --source .
 
-    [ $1 = "-n" ] && exit
+    [[ $1 == "-n" ]] && exit
     git add .
     git commit -m Init
     git push -u origin $(git rev-parse --abbrev-ref HEAD)
+}
+
+function h() {
+    local target_dir=$(dirs | tr ' ' '\n' | fzf --height 40%)
+    [[ -z $target_dir ]] && return
+    cd ${~target_dir}
 }

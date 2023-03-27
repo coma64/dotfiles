@@ -26,7 +26,7 @@ which nodenv &>/dev/null && eval "$(nodenv init -)"
 # cargo
 [ -f  "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
-
+git config alias.umtopfen rebase
 
 # Added by Toolbox App
 export PATH="$PATH:/home/zaton/.local/share/JetBrains/Toolbox/scripts"

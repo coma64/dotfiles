@@ -1,4 +1,8 @@
 " ********
+" zM fold all
+" zR unfold all
+" zo open fold
+" zc close fold
 " nnoremap gb :action GotoDatabaseObject<cr>
 " nnoremap gp :action FindInPath<cr>
 " nnoremap gk :action MethodUp<cr>
@@ -34,8 +38,7 @@ nnoremap <C-s> :w<cr>
 vnoremap <C-s> :w<cr>
 inoremap <C-s> :w<cr>
 nnoremap Y y$
-nnoremap <leader>r :source ~/.ideavimrc<cr>
- <C-h> <C-w>h
+nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 nnoremap <C-k> <C-w>k
 nnoremap <C-j> <C-w>j
@@ -48,7 +51,7 @@ nnoremap <leader>b :action ToggleLineBreakpoint<cr>
 nnoremap gcc :action CommentByLineComment<cr>
 vnoremap gc :action CommentByLineComment<cr>
 nnoremap <leader>d :action Debug<cr>
-nnoremap <leader>e :action ShowErrorDescription<cr>
+nnoremap ge :action ShowErrorDescription<cr>
 nnoremap gn :action SelectInProjectView<cr>
 nnoremap gs :action FileStructurePopup<cr>
 
@@ -77,11 +80,9 @@ vnoremap R :action RenameElement<cr>
 nnoremap gr :action Refactorings.QuickListPopupAction<cr>
 vnoremap gr :action Refactorings.QuickListPopupAction<cr>
 
-nnoremap <leader>vb :action Vcs.ShowBranches<cr>
+nnoremap <leader>vb :action Git.Branches<cr>
 nnoremap <leader>vv :action Vcs.QuickListPopupAction<cr>
 
-nnoremap <leader>c :action GotoClass<cr>
-nnoremap <leader>b :action GotoSymbol<cr>
 nnoremap gd :action GotoDeclaration<cr>
 nnoremap gi :action GotoImplementation<cr>
 
@@ -92,13 +93,18 @@ nnoremap gb :action GotoDatabaseObject<cr>
 nnoremap gf :action GotoFile<cr>
 nnoremap gp :action FindInPath<cr>
 vnoremap gp :action FindInPath<cr>
-nnoremap ge :action SearchEverywhere<cr>
-vnoremap ge :action SearchEverywhere<cr>
+" nnoremap ge :action SearchEverywhere<cr>
+" vnoremap ge :action SearchEverywhere<cr>
+nnoremap go :action GotoClass<cr>
+vnoremap go :action GotoClass<cr>
+nnoremap gl :action GotoSymbol<cr>
+vnoremap gl :action GotoSymbol<cr>
+
 
 nnoremap gm :action ManageRecentProjects<cr>
 
 " Mapped inside pycharm
-" nnoremap <C-o> :action Back<cr>
-" vnoremap <C-o> :action Back<cr>
-" nnoremap <C-i> :action Forward<cr>
-" vnoremap <C-i> :action Forward<cr>
+nnoremap <C-o> :action Back<cr>
+vnoremap <C-o> :action Back<cr>
+nnoremap <C-i> :action Forward<cr>
+vnoremap <C-i> :action Forward<cr>

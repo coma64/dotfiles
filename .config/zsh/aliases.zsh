@@ -20,10 +20,15 @@ alias vi='nvim'
 alias p='paru'
 alias n='nnn-quit-cd -RAex'
 alias l='n -d'
-alias c='n -Hnb c'
 alias zz='exec zsh'
-alias t='tmux'
-alias tp='tmuxp load'
+# alias t='tmux'
+# alias tp='tmuxp load'
+alias t='todoist-cli'
+alias kt='kitty'
+
+function kts() {
+    kitty --session sessions/$1 &!
+}
 
 alias af='alias-finder -l'
 alias ..='cd ..'
@@ -33,8 +38,8 @@ alias .....='cd ../../../..'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias cap="bat /sys/class/power_supply/BAT0/capacity"
 alias color-test="msgcat --color=test"
-alias cg="git --git-dir=${HOME}/.local/share/dotfiles --work-tree=${HOME}/"
-alias clg="lazygit --git-dir=${HOME}/.local/share/dotfiles --work-tree=${HOME}/"
+alias config="git --git-dir=${HOME}/.local/share/dotfiles --work-tree=${HOME}/"
+alias config-lg="lazygit --git-dir=${HOME}/.local/share/dotfiles --work-tree=${HOME}/"
 alias elev-priv="$(type 'sudo' &> /dev/null && echo 'sudo ' || echo 'doas ')"
 alias gitpkg='pacman -Q | grep -i "\-git" | wc -l'
 alias gpg-check='gpg2 --keyserver-options auto-key-retrieve --verify'
@@ -52,6 +57,27 @@ alias sudo='sudo '
 alias tiny='tiny_url'
 alias gcff='fzf-git-checkout'
 alias lg='lazygit'
+alias lc='lazydocker'
+alias tb='nc termbin.com 9999'
+
+# alias update-tebil-tarball="cp $DEVELOPMENT_FOLDER/js/tebils/dist/tebils-2.0.0.tgz"
+
+# docker compose
+alias dc='docker compose'
+alias dcu='dc up'
+alias dcud='dc up -d'
+alias dcudb='dc up -d --build'
+alias dcl='dc logs'
+alias dce='dc exec'
+alias dcd='dc down'
+alias dcdv='dc down -v'
+alias dcr='dc restart'
+
+# python manage.py
+alias pm='python manage.py'
+alias pms='pm shell'
+alias pmd='pm db_shell'
+alias pmdl='pm debug_login'
 
 # Replace yay with paru if installed
 [ ! -x /usr/bin/yay ] && [ -x /usr/bin/paru ] && alias yay='paru'
@@ -66,3 +92,17 @@ else
     alias lld='ls -ld'
 fi
 
+function npm-aliases() {
+    alias ${1}="${2}"
+    alias ${1}s="${2} start"
+    alias ${1}r="${2} run"
+    alias ${1}d="${2} run dev"
+    alias ${1}g="${2} run generate"
+    alias ${1}b="${2} run build"
+    alias ${1}w="${2} run watch"
+    alias ${1}bw="${2} run build:watch"
+    alias ${1}l="${2} link"
+}
+
+npm-aliases np npm
+npm-aliases pn pnpm

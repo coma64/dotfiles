@@ -18,15 +18,6 @@ source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-# zinit light-mode for \
-#     z-shell/z-a-rust \
-#     z-shell/z-a-patch-dl \
-#     z-shell/z-a-bin-gem-node
-
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
 ### End of Zinit's installer chunk
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
@@ -42,7 +33,6 @@ setopt numericglobsort                                          # Sort filenames
 setopt nobeep                                                   # No beep
 setopt appendhistory                                            # Immediately append history instead of overwriting
 setopt histignorealldups                                        # If a new command is a duplicate, remove the older one
-setopt autocd                                                   # if only directory path is entered, cd there.
 setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
@@ -51,7 +41,7 @@ setopt pushdminus
 setopt append_history 
 #setopt inc_append_history 
 setopt extended_history
-HISTSIZE=50000
+HISTSIZE=100000
 SAVEHIST=10000
 HISTFILE="${HOME}/.zsh_history"
 
@@ -64,8 +54,6 @@ zinit light romkatv/powerlevel10k
 
 zinit ice as"completion" wait lucid blockf
 zinit snippet OMZ::plugins/docker/_docker
-zinit ice as"completion" wait lucid blockf
-zinit snippet OMZ::plugins/ng/_ng
 
 zinit ice wait lucid
 zinit snippet OMZ::plugins/fancy-ctrl-z/fancy-ctrl-z.plugin.zsh
@@ -80,8 +68,6 @@ zinit light zsh-users/zsh-autosuggestions
 zinit ice wait lucid
 zinit snippet OMZ::plugins/alias-finder/alias-finder.plugin.zsh
 zinit ice wait lucid
-zinit snippet OMZ::plugins/archlinux/archlinux.plugin.zsh
-zinit ice wait lucid
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/extract/extract.plugin.zsh
@@ -90,17 +76,42 @@ zinit ice wait lucid
 zinit snippet OMZ::plugins/bgnotify/bgnotify.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/autoenv/autoenv.plugin.zsh
+zinit ice lucid
+zinit snippet OMZ::plugins/dirhistory/dirhistory.plugin.zsh
 
 zinit ice lucid wait
 zinit light willghatch/zsh-saneopt
-KEYTIMEOUT=1
-zinit ice lucid wait 
-zinit light softmoth/zsh-vim-mode
 
 # Binds
+# use emacs bindings
+bindkey -e
 bindkey '^[ ' autosuggest-accept
 zle -N copydir{,}
-bindkey '^[^O' copydir
+bindkey '^[s' copydir
+
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^[e' edit-command-line
+
+bindkey '^[o' dirhistory_zle_dirhistory_back
+bindkey '^[i' dirhistory_zle_dirhistory_future
+bindkey '^[u' dirhistory_zle_dirhistory_up
+
+function last_command_tldr() {
+    zle up-history
+    local last_command=$(echo ${LBUFFER} | cut -f1 -d' ')
+    LBUFFER="tldr ${last_command}"
+}
+zle -N last_command_tldr
+bindkey '^[t' last_command_tldr
+
+function last_command_man() {
+    zle up-history
+    local last_command=$(echo ${LBUFFER} | cut -f1 -d' ')
+    LBUFFER="batman ${last_command}"
+}
+zle -N last_command_man
+bindkey '^[m' last_command_man
 
 # Completion
 autoload -Uz compinit
@@ -118,32 +129,26 @@ zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.cache/zcache
 
-# automatically load bash completion functions
-autoload -U +X bashcompinit && bashcompinit
-
-# broot
-[ -f ${HOME}/.config/broot/launcher/bash/br ] && source "${HOME}/.config/broot/launcher/bash/br"
-
 # fzf
-# FZF_BASE="${HOME}/.fzf"
 FZF_BASE="/usr/share/fzf"
 zinit ice wait lucid
 zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh
 
-if [ -f "${ZDOTDIR}/aliases.zsh" ]; then
-    source "${ZDOTDIR}/aliases.zsh"
-fi
+[ -f ${HOME}/.config/broot/launcher/bash/br ] && . ${HOME}/.config/broot/launcher/bash/br
+[ -f ${ZDOTDIR}/aliases.zsh ] && . ${ZDOTDIR}/aliases.zsh
+[ -f ${ZDOTDIR}/lib.zsh ] && . ${ZDOTDIR}/lib.zsh
+[ -f ${ZDOTDIR}/nnn-quitcd.zsh ] && . ${ZDOTDIR}/nnn-quitcd.zsh
 
-if [ -f "${ZDOTDIR}/lib.zsh" ]; then
-    source "${ZDOTDIR}/lib.zsh"
-fi
-
-[ -f "${ZDOTDIR}/nnn-quitcd.zsh" ] && source "${ZDOTDIR}/nnn-quitcd.zsh"
+bindkey -r 't'
+[ -f /usr/share/todoist-cli/todoist_functions_fzf.sh ] && . /usr/share/todoist-cli/todoist_functions_fzf.sh
 
 # nnn
-export NNN_BMS='d:~/dev/;D:~/Downloads/;c:~/.config/;b:~/.local/bin;l:~/.local/;s:~/.local/share/;e:/etc/;t:/tmp/'
+export NNN_BMS='d:~/dev/;D:~/Downloads/;c:~/.config/;b:~/.local/bin;l:~/.local/;s:~/.local/share/;e:/etc/;t:/tmp/;p:~/Pictures;o:~/Documents'
 export NNN_FIFO='/tmp/nnn.fifo'
-export NNN_PLUG='f:fzcd;v:imgview;p:preview-tui;o:fzopen;g:gitroot;s:suedit;x:togglex;u:upload;d:dev-folders-fzf'
+local nnn_tools='y:pycharm;w:webstorm;l:!lazygit*'
+local nnn_jump='f:fzcd;o:fzopen;g:gitroot;d:dev-folders-fzf;c:config-fzf'
+local nnn_preview='p:preview-tui'
+export NNN_PLUG="s:suedit;u:upload;${nnn_tools};${nnn_jump};${nnn_preview}"
 
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.dotfiles/.config/zsh/.p10k.zsh ]] || source ~/.dotfiles/.config/zsh/.p10k.zsh
