@@ -32,7 +32,6 @@ return require('packer').startup(function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ":TSUpdate",
-    branch = '347aaa95',
     config = function()
       local success, treesitter_configs = pcall(require, 'nvim-treesitter.configs')
       if not success then return end
@@ -61,7 +60,7 @@ return require('packer').startup(function(use)
     config = function()
       local success, telescope = pcall(require, 'telescope')
       if not success then return end
-      telescope.load_extension 'fzf'
+      -- telescope.load_extension 'fzf'
     end,
   }
 
@@ -114,7 +113,7 @@ return require('packer').startup(function(use)
       if not success then return end
       lsp_installer.setup {
         'pyright',
-        'sumneko_lua',
+        'lua_ls',
         'tsserver',
         'angularls',
         'svelte',
