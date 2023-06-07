@@ -11,7 +11,7 @@ backup_file () {
     mv $1 $HOME/.config-backup/$1
 }
 
-git clone --bare git@github.com:coma64/dotfiles.git $HOME/.local/share/dotfiles
+[[ ! -d $HOME/.local/share/dotfiles ]] && git clone --bare https://github.com/coma64/dotfiles $HOME/.local/share/dotfiles
 
 config checkout $1
 
